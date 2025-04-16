@@ -1,2 +1,7 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<svelte:head>
+	<title>Veracruz Inclusivo</title>
+</svelte:head>
+
+<main class="container mt-24">
+	<p>lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.</p>
+</main>
