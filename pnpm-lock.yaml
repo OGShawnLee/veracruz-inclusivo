@@ -44,6 +44,9 @@ importers:
       unocss:
         specifier: 66.1.0-beta.11
         version: 66.1.0-beta.11(postcss@8.5.3)(vite@6.3.0(jiti@2.4.2))(vue@3.5.13(typescript@5.8.3))
+      valibot:
+        specifier: ^1.0.0
+        version: 1.0.0(typescript@5.8.3)
       vite:
         specifier: ^6.2.5
         version: 6.3.0(jiti@2.4.2)
@@ -902,6 +905,14 @@ packages:
   unplugin-utils@0.2.4:
     resolution: {integrity: sha512-8U/MtpkPkkk3Atewj1+RcKIjb5WBimZ/WSLhhR3w6SsIj8XJuKTacSP8g+2JhfSGw0Cb125Y+2zA/IzJZDVbhA==}
     engines: {node: '>=18.12.0'}
+
+  valibot@1.0.0:
+    resolution: {integrity: sha512-1Hc0ihzWxBar6NGeZv7fPLY0QuxFMyxwYR2sF1Blu7Wq7EnremwY2W02tit2ij2VJT8HcSkHAQqmFfl77f73Yw==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   vite@6.3.0:
     resolution: {integrity: sha512-9aC0n4pr6hIbvi1YOpFjwQ+QOTGssvbJKoeYkuHHGWwlXfdxQlI8L2qNMo9awEEcCPSiS+5mJZk5jH1PAqoDeQ==}
@@ -1845,6 +1856,10 @@ snapshots:
     dependencies:
       pathe: 2.0.3
       picomatch: 4.0.2
+
+  valibot@1.0.0(typescript@5.8.3):
+    optionalDependencies:
+      typescript: 5.8.3
 
   vite@6.3.0(jiti@2.4.2):
     dependencies:
