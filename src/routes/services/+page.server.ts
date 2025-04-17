@@ -1,7 +1,6 @@
 import type { ServiceData } from "@features/service/schema";
-import { db } from "$lib/db";
-import { error } from "@sveltejs/kit"
 import { ServiceController } from "@features/service/controller";
+import { error } from "@sveltejs/kit"
 
 export async function load() {
   const { data, error: err } = await ServiceController.getMany(10);
