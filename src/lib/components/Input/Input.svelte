@@ -14,7 +14,7 @@
 </script>
 
 <input
-	class="h-12 px-4 $bg-ground-0 border $border-ground-2 rounded-lg $text-summit"
+	class="h-12 px-4 $bg-ground-0 border $border-ground-2 rounded-lg $text-summit $placeholder"
 	{name}
 	{type}
 	{placeholder}

@@ -11,7 +11,7 @@
 </script>
 
 <textarea
-	class="w-full min-h-12 py-2.5 px-4 $bg-ground-0 border $border-ground-2 rounded-lg $text-summit"
+	class="w-full min-h-12 py-2.5 px-4 $bg-ground-0 border $border-ground-2 rounded-lg $text-summit $placeholder"
 	{name}
 	{placeholder}
 	bind:value

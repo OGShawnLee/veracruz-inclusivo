@@ -1,13 +1,25 @@
 import type { ServiceData } from "@features/service/schema";
 import { ServiceController } from "@features/service/controller";
-import { error } from "@sveltejs/kit"
+import { error } from "@sveltejs/kit";
 
-export async function load() {
+export async function load(event) {
+  const search = event.url.searchParams.get("search-query");
+
+  if (search) {
+    const { data, error: err } = await ServiceController.searchMany(search);
+
+    if (err) {
+      error(500, "Error fetching services");
+    }
+
+    return { services: data as ServiceData[] }
+  }
+
   const { data, error: err } = await ServiceController.getMany(10);
   
   if (err) {
     error(500, "Error fetching services");
   }
-
+  
   return { services: data as ServiceData[] }
 }

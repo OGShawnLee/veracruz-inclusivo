@@ -9,7 +9,7 @@
 
 <SiteHeader />
 <ModeWatcher defaultMode="system" />
-<div class="mt-38">
+<div class="mt-38 mb-18">
 	{@render children()}
 </div>
 

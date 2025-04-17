@@ -21,6 +21,7 @@ export default defineConfig({
 		'$bg-ground-1': 'bg-ground-1 dark:bg-ground-1-dark',
 		'$bg-ground-2': 'bg-ground-2 dark:bg-ground-2-dark',
 		'$border-ground-2': 'border-ground-2 dark:border-ground-2-dark',
+		'$placeholder': 'placeholder-neutral-500',
 	},
 	theme: {
 		colors: {
