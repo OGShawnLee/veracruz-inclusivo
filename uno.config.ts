@@ -29,7 +29,7 @@ export default defineConfig({
 		presetWebFonts({
 			provider: 'fontshare',
 			fonts: {
-				satoshi: 'General Sans'
+				satoshi: 'Satoshi'
 			}
 		})
 	]
