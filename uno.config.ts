@@ -15,11 +15,13 @@ export default defineConfig({
 		container: 'w-full max-w-1538px mx-auto px-4 md:px-8',
 		// Adapating to the Color Mode
 		"$text-summit": "text-summit dark:text-summit-dark",
+		"$text-summit-inverse": "text-summit-dark dark:text-summit",
 		"$text-common": "text-common dark:text-common-dark",
 		'$text-marque': 'text-marque dark:text-marque-dark',
 		'$bg-ground-0': 'bg-ground-0 dark:bg-ground-0-dark',
 		'$bg-ground-1': 'bg-ground-1 dark:bg-ground-1-dark',
 		'$bg-ground-2': 'bg-ground-2 dark:bg-ground-2-dark',
+		"$bg-marque": "bg-marque dark:bg-marque-dark",
 		'$border-ground-2': 'border-ground-2 dark:border-ground-2-dark',
 		'$placeholder': 'placeholder-neutral-500',
 	},
