@@ -1,1 +1,3 @@
-// place files you want to import through the `$lib` alias in this folder.
+  export function concatClassName(className: string, additional: string) {
+    return additional ? className + " " + additional : className;  
+  }

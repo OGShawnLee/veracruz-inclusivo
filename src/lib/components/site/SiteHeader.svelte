@@ -8,10 +8,10 @@
 	</li>
 {/snippet}
 
-<header class="fixed top-0 inset-x-0 z-10 bg-ground-0/75 backdrop-filter backdrop-blur-lg">
+<header class="fixed top-0 inset-x-0 z-10 bg-ground-1/75 backdrop-filter backdrop-blur-lg">
 	<div class="container h-20 flex items-center justify-between">
 		<div class="flex items-center gap-16">
-			<h1 class="text-3xl font-bold">
+			<h1 class="text-3xl text-summit font-bold">
 				<a href="/"> Veracruz Inclusivo </a>
 			</h1>
 			<nav>
@@ -26,7 +26,7 @@
 			<button class="button button--side size-10">
 				<Sun />
 			</button>
-			<a class="button button--side h-10 px-4" href="/dashboard/services/create-service">
+			<a class="button button--side h-10 px-4" href="/dashboard/create-service">
 				Crear Servicio
 			</a>
 		</div>
