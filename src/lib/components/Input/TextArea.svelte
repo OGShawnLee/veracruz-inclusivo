@@ -11,7 +11,7 @@
 </script>
 
 <textarea
-	class="w-full min-h-10 py-2 px-4 border-b border-ground-2 outline-none text-summit focus:(ring-1 ring-marque) transition duration-150"
+	class="w-full min-h-12 py-2.5 px-4 $bg-ground-0 border $border-ground-2 rounded-lg $text-summit"
 	{name}
 	{placeholder}
 	bind:value

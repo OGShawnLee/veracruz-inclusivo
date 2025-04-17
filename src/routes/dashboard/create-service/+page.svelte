@@ -18,13 +18,10 @@
 </svelte:head>
 
 <main class="container">
-	<div class="max-w-2xl mx-auto rounded-xl bg-ground-0 border-1 border-ground-2">
-		<div class="h-20 px-8 flex items-center justify-between border-b border-ground-2">
-			<h1 class="text-2xl text-summit font-bold">Registrar Servicio</h1>
-			<a
-				class="w-10 h-10 flex items-center justify-center bg-ground-1 border border-ground-2 rounded-lg hover:(text-black)"
-				href="/"
-			>
+	<div class="max-w-2xl mx-auto rounded-xl $bg-ground-1 border $border-ground-2">
+		<div class="h-20 px-8 flex items-center justify-between border-b $border-ground-2">
+			<h1 class="text-2xl text-summit dark:text-summit-dark font-bold">Registrar Servicio</h1>
+			<a class="button button--side size-10" href="/">
 				<X />
 			</a>
 		</div>
@@ -100,7 +97,7 @@
 					<Input.Error />
 				</Field>
 			</Input.Root>
-			<button class="w-full h-12 w-full bg-summit rounded-lg font-medium text-white" type="submit">
+			<button class="button button--main h-12 dark:text-summit" type="submit">
 				Crear Servicio
 			</button>
 		</form>
