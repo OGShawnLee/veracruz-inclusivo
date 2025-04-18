@@ -4,7 +4,6 @@
 
 <main class="container">
 	<h1 class="hidden"> Veracruz Inclusivo </h1>
-	<!-- hero text + image on the right -->
 	<div class="grid lg:grid-cols-12 gap-16 items-center">
 		<img class="lg:col-span-6 xl:col-span-8 h-full rounded-3xl object-cover" src="https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hero" />
 		<div class="lg:col-span-6 xl:col-span-4 grid gap-8">

@@ -13,6 +13,8 @@ export default defineConfig({
 		'button--main': 'bg-ground-0-dark text-summit-dark dark:bg-ground-0 dark:text-summit',
 		'button--side': '$bg-ground-2 hover:(bg-ground-0-dark text-summit-dark dark:(bg-ground-0 text-summit))',
 		container: 'w-full max-w-1538px mx-auto px-4 md:px-8',
+		"heading": "$text-summit tracking-tighter",
+		"flex-center": "flex items-center justify-center",
 		// Adapating to the Color Mode
 		"$text-summit": "text-summit dark:text-summit-dark",
 		"$text-summit-inverse": "text-summit-dark dark:text-summit",

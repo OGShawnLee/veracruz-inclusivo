@@ -20,7 +20,7 @@
 <main class="container">
 	<div class="max-w-2xl mx-auto rounded-xl $bg-ground-1 border $border-ground-2">
 		<div class="h-20 px-8 flex items-center justify-between border-b $border-ground-2">
-			<h1 class="text-2xl text-summit dark:text-summit-dark font-bold">Registrar Servicio</h1>
+			<h1 class="heading text-2xl font-bold">Registrar Servicio</h1>
 			<a class="button button--side size-10" href="/">
 				<X />
 			</a>

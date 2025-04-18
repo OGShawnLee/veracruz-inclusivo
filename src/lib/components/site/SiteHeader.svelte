@@ -12,10 +12,10 @@
 <header class="fixed top-0 inset-x-0 z-10 bg-ground-0/75 backdrop-filter backdrop-blur-lg border-b border-ground-2 dark:(bg-ground-0-dark/75 border-ground-2-dark)">
 	<div class="container h-20 flex items-center justify-between">
 		<div class="flex items-center gap-16">
-			<h1 class="text-3xl $text-summit font-bold">
+			<h1 class="heading text-3xl font-bold">
 				<a href="/"> Veracruz Inclusivo </a>
 			</h1>
-			<nav>
+			<nav class="hidden lg:block">
 				<ul class="flex gap-8">
 					{@render link('/', 'Inicio')}
 					{@render link('/services', 'Servicios')}
