@@ -41,7 +41,7 @@
 
 {#snippet cardSmall(title: string, description: string, IconComponent)}
 	<div
-		class="w-full min-w-full sm:min-w-325px $bg-ground-1 shadow-lg rounded-3xl border $border-ground-2 overflow-hidden snap-center"
+		class="w-full min-w-full sm:min-w-325px xl:min-w-initial $bg-ground-1 shadow-lg rounded-3xl border $border-ground-2 overflow-hidden snap-center"
 	>
 		<div class="p-8 grid gap-4">
 			<IconComponent class="$text-marque" size={48} strokeWidth={1.75} />
@@ -55,9 +55,10 @@
 	</div>
 {/snippet}
 
-{#snippet cardImageless(title: string, description: string)}
+{#snippet cardImageless(title: string, description: string, label: string)}
 	<div class="$bg-ground-1 shadow-lg rounded-3xl border $border-ground-2">
 		<div class="p-8 grid gap-4">
+			<p class="$text-summit uppercase font-medium text-sm">{label}</p>
 			<h3 class="heading text-3xl font-semibold">
 				{title}
 			</h3>
@@ -126,7 +127,7 @@
 				</p>
 			</div>
 			<div class="flex flex-nowrap overflow-x-auto snap-mandatory snap-x">
-				<div class="w-full inline-flex xl:grid grid-cols-4 gap-8" style="vertical-align: top;">
+				<div class="w-full inline-flex gap-8" style="vertical-align: top;">
 					{@render cardSmall(
 						'Conferencias Virtuales Gratuitas',
 						'Accede a información relevante y actualizada sobre inclusión desde la comodidad de tu hogar.',
@@ -162,19 +163,22 @@
 					Sé parte del Movimiento por la Inclusión en Veracruz
 				</p>
 			</div>
-			<div class="grid gap-8">
+			<div class="grid lg:grid-cols-3 gap-8">
 				{@render cardImageless(
-					'Red Estatal Veracruz Inclusivo (Capacitadores)',
-					'Si tu asociación civil o centro de atención especializada brinda servicios a la población neurodivergente y con discapacidad, te invitamos a unirte a nuestra red de capacitadores. Comparte tu experiencia y contribuye a formar a otros profesionales.'
+					'Red Estatal Veracruz Inclusivo',
+					'Si tu asociación civil o centro de atención especializada brinda servicios a la población neurodivergente y con discapacidad, te invitamos a unirte a nuestra red de capacitadores. Comparte tu experiencia y contribuye a formar a otros profesionales.',
+					'Capacitadores'
 				)}
 				{@render cardImageless(
-					'Aliados Estratéticos (Instituciones y Empresas)',
-					'Instituciones públicas y empresas que comparten nuestra visión pueden convertirse en aliados estratégicos. Tu apoyo en términos de instalaciones, personal, vinculación, difusión o recursos materiales es fundamental para ampliar nuestro impacto.'
+					'Aliados Estratéticos',
+					'Instituciones públicas y empresas que comparten nuestra visión pueden convertirse en aliados estratégicos. Tu apoyo en términos de instalaciones, personal, vinculación, difusión o recursos materiales es fundamental para ampliar nuestro impacto.',
+					'Instituciones y Empresas'
 				)}
 				{@render cardImageless(
-					'Servicios (Capacitados)',
-					'Si tu empresa o servicio general o educativo está comprometido con la inclusión, te invitamos a ser parte de nuestro directorio. Demuestra tu compromiso con una atención respetuosa y accesible.'
-				)}
+					'Servicios',
+					'Si tu empresa o servicio general o educativo está comprometido con la inclusión, te invitamos a ser parte de nuestro directorio. Demuestra tu compromiso con una atención respetuosa y accesible.',
+					'Capacitados'
+			)}
 			</div>
 		</section>
 	</div>
