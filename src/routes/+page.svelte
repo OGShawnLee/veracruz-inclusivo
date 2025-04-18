@@ -17,9 +17,9 @@
 				<a class="h-12 px-4 flex items-center justify-center $bg-marque $text-summit-inverse rounded-xl font-bold" href="/services">
 					Conoce Servicios
 				</a>
-				<button class="h-12 px-4 bg-transparent rounded-xl border $border-ground-2 font-medium">
+				<a class="button button--side h-12" href="/about-us">
 					Más Información
-				</button>
+				</a>
 			</div>
 		</div>
 	</div>
