@@ -1,11 +1,12 @@
 <script lang="ts">
 	import ImageGallery from './image-gallery.svelte';
 	import {
+		type Icon,
 		ArrowRight,
 		GraduationCap,
 		HeartHandshake,
 		LayoutList,
-		TvMinimalPlay as TVMinimalPlay
+		TvMinimalPlay as TVMinimalPlay,
 	} from 'lucide-svelte';
 	import { ImageAboutWhoWeAre } from '$lib/assets';
 </script>
@@ -39,7 +40,7 @@
 	</div>
 {/snippet}
 
-{#snippet cardSmall(title: string, description: string, IconComponent)}
+{#snippet cardSmall(title: string, description: string, IconComponent: typeof Icon)}
 	<div
 		class="w-full min-w-full sm:min-w-325px xl:min-w-initial $bg-ground-1 shadow-lg rounded-3xl border $border-ground-2 overflow-hidden snap-center"
 	>
@@ -97,11 +98,11 @@
 						'https://images.pexels.com/photos/6894066/pexels-photo-6894066.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 					)}
 				</div>
-				<div
+				<!-- <div
 					class="absolute right-0 bottom-80 size-12 translate-x-1/2 flex-center sm:hidden $bg-ground-0 shadow-lg rounded-full animate-pulse"
 				>
 					<ArrowRight />
-				</div>
+				</div> -->
 			</div>
 		</section>
 		<section class="grid md:grid-cols-12 gap-8">
@@ -150,11 +151,11 @@
 					)}
 				</div>
 			</div>
-			<div
+			<!-- <div
 				class="absolute right-0 bottom-40 size-12 translate-x-1/2 flex-center sm:hidden $bg-ground-0 shadow-lg rounded-full animate-pulse"
 			>
 				<ArrowRight />
-			</div>
+			</div> -->
 		</section>
 		<section class="relative grid gap-8">
 			<div class="grid gap-8">
