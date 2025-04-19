@@ -1,11 +1,15 @@
 <script lang="ts">
   import type { ServiceData } from '@features/service/schema';
+  import { ServiceCategoryEnumeration } from '@features/service/schema';
 
-  export const { service }: { service: ServiceData } = $props();
+  export const { service }: { service: ServiceData } = $props();  
 </script>
 
 <article class="self-start p-8 grid gap-4 $bg-ground-1 border $border-ground-2 rounded-xl">
-  <div class="flex">
+  <div class="flex items-center gap-2">
+    <div class="h-8 px-4 $bg-ground-2 rounded-full flex items-center justify-center font-medium">
+      {ServiceCategoryEnumeration[service.category]}
+    </div>
     <div class="h-8 px-4 $bg-ground-2 rounded-full flex items-center justify-center font-medium">
       {service.phone_number}
     </div>

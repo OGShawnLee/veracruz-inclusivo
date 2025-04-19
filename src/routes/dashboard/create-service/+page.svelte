@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { Control, Field } from 'formsnap';
 	import { X } from 'lucide-svelte';
-	import { DESCRIPTION_MAX_LENGTH, DESCRIPTION_MIN_LENGTH, ServiceSchema } from '@features/service/schema';
-	import { Input } from '@components';
+	import {
+		DESCRIPTION_MAX_LENGTH,
+		DESCRIPTION_MIN_LENGTH,
+		ServiceCategoryEnumeration,
+		ServiceSchema
+	} from '@features/service/schema';
+	import { Input, Select } from '@components';
 	import { superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 
@@ -95,6 +100,16 @@
 						{/snippet}
 					</Control>
 					<Input.Error />
+				</Field>
+			</Input.Root>
+			<Input.Root>
+				<Field {form} name="category">
+					<Select
+						enumeration={ServiceCategoryEnumeration}
+						label="Categoria"
+						placeholder="Seleccione una categoria"
+						bind:value={$input.category}
+					/>
 				</Field>
 			</Input.Root>
 			<button class="button button--main h-12 dark:text-summit" type="submit">
