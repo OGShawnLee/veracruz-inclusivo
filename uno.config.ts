@@ -49,7 +49,8 @@ export default defineConfig({
 		presetWebFonts({
 			provider: 'fontshare',
 			fonts: {
-				satoshi: 'Satoshi'
+				satoshi: 'Satoshi',
+				chillax: 'Chillax'
 			}
 		})
 	]

@@ -6,6 +6,15 @@
 	let open = false;
 </script>
 
+{#snippet logo()}
+	<span class="heading text-3xl font-chillax">
+		<a href="/" onclick={() => open = false}> 
+			<span class="font-medium"> Veracruz </span>
+			<span class="$text-marque"> Inclusivo </span>
+		</a>
+	</span>
+{/snippet}
+
 {#snippet link(href: string, label: string)}
 	<li>
 		<a class="hover:(text-marque dark:text-marque-dark) transition-colors duration-150" {href}>
@@ -32,9 +41,7 @@
 >
 	<div class="container h-20 flex items-center justify-between">
 		<div class="flex items-center gap-16">
-			<h1 class="heading text-3xl font-bold">
-				<a href="/"> Veracruz Inclusivo </a>
-			</h1>
+			{@render logo()}
 			<nav class="hidden md:block">
 				<ul class="flex gap-8">
 					{@render link('/', 'Inicio')}
@@ -54,9 +61,7 @@
 					<header
 						class="container h-20 flex items-center justify-between border-b border-b-ground-2 dark:(border-b-ground-2-dark)"
 					>
-						<h1 class="heading text-3xl font-bold">
-							<a href="/"> Veracruz Inclusivo </a>
-						</h1>
+						{@render logo()}
 						<button class="button button--side size-10" onclick={() => (open = false)}>
 							<X />
 						</button>
