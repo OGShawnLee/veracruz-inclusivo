@@ -1,6 +1,7 @@
 import type { InferOutput } from "valibot";
 import { length, picklist, maxLength, minLength, object, pipe, string, transform, trim } from "valibot";
 
+
 function reduceSpacing(input: string) {
   return input.replace(/\s+/g, " ");
 }
@@ -23,6 +24,14 @@ export const ServiceCategoryEnumeration: Record<ServiceCategory, string> = {
   "HEALTH-N-WELL-BEING": "Salud y Bienestar",
   "SMALL-COMMERCE": "Comercio Minorista",
   SPORTS: "Deportes",
+}
+
+export type ServiceRegion = "NORTH" | "CENTRE" | "SOUTH";
+
+export const ServiceRegionEnumeration: Record<ServiceRegion, string> = {
+  NORTH: "Norte",
+  CENTRE: "Centro",
+  SOUTH: "Sur",
 }
 
 export const ServiceSchema = object({
@@ -53,7 +62,14 @@ export const ServiceSchema = object({
     transform(reduceSpacing),
     length(PHONE_LENGTH, "Teléfono debe tener 10 caracteres."),
   ),
-  category: picklist(Object.keys(ServiceCategoryEnumeration) as ServiceCategory[], "Categoría debe ser una de las opciones disponibles."),
+  category: picklist(
+    Object.keys(ServiceCategoryEnumeration) as ServiceCategory[], 
+    "Categoría debe ser una de las opciones disponibles."
+  ),
+  region: picklist(
+    Object.keys(ServiceRegionEnumeration) as ServiceRegion[], 
+    "Región debe ser una de las opciones disponibles."
+  ),
 });
 
 export type ServiceData = InferOutput<typeof ServiceSchema>;

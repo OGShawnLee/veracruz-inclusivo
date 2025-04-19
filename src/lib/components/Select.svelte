@@ -30,7 +30,7 @@
 					<ChevronDown />
 				</Select.Trigger>
 				<Select.Content
-					class="min-w-72 p-1.25 $bg-ground-0 border $border-ground-2 rounded-lg shadow-lg"
+					class="p-1.25 min-w-60 $bg-ground-0 border $border-ground-2 rounded-lg shadow-lg"
 					align="start"
 					sideOffset={8}
 				>

@@ -5,6 +5,7 @@
 		DESCRIPTION_MAX_LENGTH,
 		DESCRIPTION_MIN_LENGTH,
 		ServiceCategoryEnumeration,
+		ServiceRegionEnumeration,
 		ServiceSchema
 	} from '@features/service/schema';
 	import { Input, Select } from '@components';
@@ -102,16 +103,28 @@
 					<Input.Error />
 				</Field>
 			</Input.Root>
-			<Input.Root>
-				<Field {form} name="category">
-					<Select
-						enumeration={ServiceCategoryEnumeration}
-						label="Categoria"
-						placeholder="Seleccione una categoria"
-						bind:value={$input.category}
-					/>
-				</Field>
-			</Input.Root>
+			<div class="grid grid-cols-2 gap-4">
+				<Input.Root>
+					<Field {form} name="category">
+						<Select
+							enumeration={ServiceCategoryEnumeration}
+							label="Categoria"
+							placeholder="Seleccione una categoria"
+							bind:value={$input.category}
+						/>
+					</Field>
+				</Input.Root>
+				<Input.Root>
+					<Field {form} name="region">
+						<Select
+							enumeration={ServiceRegionEnumeration}
+							label="Region"
+							placeholder="Seleccione una región"
+							bind:value={$input.region}
+						/>
+					</Field>
+				</Input.Root>
+			</div>
 			<button class="button button--main h-12 dark:text-summit" type="submit">
 				Crear Servicio
 			</button>
