@@ -11,7 +11,7 @@
 </script>
 
 {#snippet badge(label: string, IconComponent?: typeof Icon)}
-  <div class="h-8 w-fit px-4 $bg-ground-2 rounded-full flex items-center justify-center gap-2 font-medium">
+  <div class="h-8 w-fit px-4 flex items-center justify-center gap-2 $bg-ground-2 rounded-full font-medium">
     {#if IconComponent}
       <IconComponent size={18} strokeWidth={1.75} />
     {/if}

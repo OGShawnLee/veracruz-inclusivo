@@ -23,14 +23,14 @@
 			<Input.Label for={props.name} {label} />
 			<Select.Root type="single" bind:value name={props.name}>
 				<Select.Trigger
-					class="h-12 px-4 flex items-center justify-between $bg-ground-0 border $border-ground-2 rounded-lg $text-summit text-left"
+					class="h-12 px-4 flex items-center justify-between gap-4 $bg-ground-1 border $border-ground-2 rounded-lg $text-summit text-left hover:$bg-ground-2"
 					{...props}
 				>
 					<span> {selected} </span>
 					<ChevronDown />
 				</Select.Trigger>
 				<Select.Content
-					class="p-1.25 min-w-60 $bg-ground-0 border $border-ground-2 rounded-lg shadow-lg"
+					class="p-1.25 min-w-72 $bg-ground-0 border $border-ground-2 rounded-lg shadow-lg"
 					align="start"
 					sideOffset={8}
 				>

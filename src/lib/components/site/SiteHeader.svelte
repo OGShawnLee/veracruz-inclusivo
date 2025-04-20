@@ -1,5 +1,17 @@
 <script lang="ts">
-	import { type Icon, CircleHelp, Computer, Home, LayoutList, Menu, Moon, Plus, Sun, X } from 'lucide-svelte';
+	import {
+		type Icon,
+		CircleHelp,
+		Computer,
+		Home,
+		LayoutDashboard,
+		LayoutList,
+		Menu,
+		Moon,
+		Plus,
+		Sun,
+		X
+	} from 'lucide-svelte';
 	import { mode, setMode, toggleMode } from 'mode-watcher';
 	import { Dialog } from 'bits-ui';
 
@@ -8,7 +20,7 @@
 
 {#snippet logo()}
 	<span class="heading text-3xl font-chillax">
-		<a href="/" onclick={() => open = false}> 
+		<a href="/" onclick={() => (open = false)}>
 			<span class="font-medium"> Veracruz </span>
 			<span class="$text-marque"> Inclusivo </span>
 		</a>
@@ -45,6 +57,7 @@
 			<nav class="hidden md:block">
 				<ul class="flex gap-8">
 					{@render link('/', 'Inicio')}
+					{@render link('/dashboard', 'Dashboard')}
 					{@render link('/services', 'Servicios')}
 					{@render link('/about-us', 'Acerca de Nosotros')}
 				</ul>
@@ -70,6 +83,7 @@
 						<ul class="grid gap-4">
 							{@render mobileLink('/', 'Inicio', Home)}
 							{@render mobileLink('/services', 'Servicios', LayoutList)}
+							{@render mobileLink('/dashboard', 'Dashboard', LayoutDashboard)}
 							{@render mobileLink('/about-us', 'Acerca de Nosotros', CircleHelp)}
 							<div class="h-10 mx-2 px-2 flex items-center justify-between rounded-md">
 								<span class="$text-summit">Modo de Color</span>
@@ -99,7 +113,7 @@
 					<Moon />
 				{/if}
 			</button>
-			<a class="button button--side h-10 px-4" href="/dashboard/create-service"> Crear Servicio </a>
+			<a class="button button--side button--rectangle h-10" href="/dashboard/service"> Crear Servicio </a>
 		</div>
 	</div>
 </header>
