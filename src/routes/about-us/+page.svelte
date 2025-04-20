@@ -2,13 +2,12 @@
 	import ImageGallery from './image-gallery.svelte';
 	import {
 		type Icon,
-		ArrowRight,
 		GraduationCap,
 		HeartHandshake,
 		LayoutList,
 		TvMinimalPlay as TVMinimalPlay,
 	} from 'lucide-svelte';
-	import { ImageAboutWhoWeAre } from '$lib/assets';
+	import { ImageAboutA1, ImageAboutA2, ImageAboutA3, ImageAboutWhoWeAre } from '$lib/assets';
 </script>
 
 <svelte:head>
@@ -26,7 +25,7 @@
 
 {#snippet card(title: string, description: string, image: string)}
 	<div
-		class="w-full min-w-full sm:min-w-400px h-700px $bg-ground-1 shadow-lg rounded-3xl border $border-ground-2 overflow-hidden snap-center"
+		class="w-full min-w-full sm:min-w-400px $bg-ground-1 shadow-lg rounded-3xl border $border-ground-2 overflow-hidden snap-center"
 	>
 		<div class="p-8 grid gap-4">
 			<h3 class="heading text-3xl font-semibold">
@@ -36,7 +35,7 @@
 				{description}
 			</p>
 		</div>
-		<img class="h-full object-cover object-center aspect-ratio-3/2" src={image} alt="" />
+		<img class="" src={image} alt="" />
 	</div>
 {/snippet}
 
@@ -85,17 +84,17 @@
 					{@render card(
 						'Conecta con la Inclusión en Veracruz',
 						'Deseamos conectar a las familiar con servicios inclusivos que aseguren una atención de calidad y amigable para esos seres queridos que necesitan más de nuestra atención y cuidado.',
-						'https://images.pexels.com/photos/7188804/pexels-photo-7188804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+						ImageAboutA1
 					)}
 					{@render card(
 						'Recibe la Atención de Calidad que Mereces',
 						'Nos aseguramos de que cada centro, asociación, profesional y empresa ha pasado por capacitación y supervisión, garantizando atención de calidad y respeto.',
-						'https://images.pexels.com/photos/4098228/pexels-photo-4098228.jpeg'
+						ImageAboutA2
 					)}
 					{@render card(
 						'La Retroalimentación es Fundamental',
 						'Queremos darle voz a las familias para evaluar la confiabilidad y efectividad de los servicios. Queremos que cada familia pueda compartir su experiencia y ayudar a otros a tomar decisiones.',
-						'https://images.pexels.com/photos/6894066/pexels-photo-6894066.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+						ImageAboutA3
 					)}
 				</div>
 				<!-- <div
