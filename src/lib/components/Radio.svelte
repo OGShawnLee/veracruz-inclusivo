@@ -6,10 +6,11 @@
 	interface Properties {
 		enumeration: Record<T, string>;
 		label: string;
+		hidden?: boolean;
 		value: T;
 	}
 
-	let { enumeration, label, value = $bindable() }: Properties = $props();
+	let { enumeration, label, hidden, value = $bindable() }: Properties = $props();
 
 	const entries = Object.entries(enumeration) as [T, string][];
 </script>
@@ -17,9 +18,9 @@
 <Control>
 	{#snippet children({ props })}
 		<Input.Group>
-			<Input.Label for={props.name} {label} />
+			<Input.Label for={props.name} {label} {hidden} />
 			<RadioGroup.Root
-				class="w-full flex items-center gap-2 sm:(w-fit justify-center)"
+				class="w-full flex flex-wrap items-center gap-2 sm:(w-fit justify-center)"
 				orientation="horizontal"
 				name={props.name}
 				bind:value

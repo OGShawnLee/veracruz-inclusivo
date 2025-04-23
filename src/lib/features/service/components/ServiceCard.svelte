@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { ServiceData } from '@features/service/schema';
+  import type { Icon } from "lucide-svelte";
+  import { Earth, Headset } from "lucide-svelte";
   import { ServiceCategoryEnumeration, ServiceRegionEnumeration } from '@features/service/schema';
-  import { type Icon, Earth, Headset } from "lucide-svelte";
 
   export const { service }: { service: ServiceData } = $props();
   
@@ -19,7 +20,7 @@
   </div>
 {/snippet}
 
-<article class="self-start p-8 grid gap-4 $bg-ground-1 border $border-ground-2 rounded-xl">
+<article class="p-8 flex flex-col gap-4 $bg-ground-1 border $border-ground-2 rounded-2xl shadow-lg">
   <div class="flex items-center flex-wrap gap-2">
     {@render badge(ServiceCategoryEnumeration[service.category])}
     {@render badge("Región " + ServiceRegionEnumeration[service.region], Earth)}
@@ -32,5 +33,7 @@
       Registrado el {new Date(service.created_at).toLocaleDateString()}
     </span>
   </div>
-  {@render badge(formatPhoneNumber(service.phone_number), Headset)}
+  <div class="mt-auto grid gap-8">
+    {@render badge(formatPhoneNumber(service.phone_number), Headset)}
+  </div>
 </article>

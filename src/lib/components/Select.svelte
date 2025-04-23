@@ -7,11 +7,12 @@
 	interface Properties {
 		enumeration: Record<T, string>;
 		label: string;
+		hidden?: boolean;
 		placeholder: string;
 		value?: T;
 	}
 
-	let { enumeration, label, placeholder, value = $bindable() }: Properties = $props();
+	let { enumeration, label, hidden, placeholder, value = $bindable() }: Properties = $props();
 
 	const entries = Object.entries(enumeration) as [T, string][];
 	const selected = $derived(value ? enumeration[value] : placeholder);
@@ -20,7 +21,7 @@
 <Control>
 	{#snippet children({ props })}
 		<Input.Group>
-			<Input.Label for={props.name} {label} />
+			<Input.Label for={props.name} {label} {hidden} />
 			<Select.Root type="single" bind:value name={props.name}>
 				<Select.Trigger
 					class="h-12 px-4 flex items-center justify-between gap-4 $bg-ground-1 border $border-ground-2 rounded-lg $text-summit text-left hover:$bg-ground-2"
