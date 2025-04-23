@@ -1,1 +1,1 @@
-export { default as ServiceCard } from "./ServiceCard.svelte";
+export { default as ServiceCard } from './ServiceCard.svelte';

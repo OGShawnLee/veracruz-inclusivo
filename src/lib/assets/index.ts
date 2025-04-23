@@ -1,5 +1,5 @@
-export { default as ImageAboutA1 } from "./image-about-a-1.jpg"
-export { default as ImageAboutA2 } from "./image-about-a-2.jpg"
-export { default as ImageAboutA3 } from "./image-about-a-3.jpg"
-export { default as ImageAbout2 } from "./image-about-2.jpg"
-export { default as ImageAboutWhoWeAre } from "./image-about-who-we-are.jpg"
+export { default as ImageAboutA1 } from './image-about-a-1.jpg';
+export { default as ImageAboutA2 } from './image-about-a-2.jpg';
+export { default as ImageAboutA3 } from './image-about-a-3.jpg';
+export { default as ImageAbout2 } from './image-about-2.jpg';
+export { default as ImageAboutWhoWeAre } from './image-about-who-we-are.jpg';

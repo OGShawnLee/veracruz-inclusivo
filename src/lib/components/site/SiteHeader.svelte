@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Icon } from "lucide-svelte";
-	import SiteLogo from "./SiteLogo.svelte"
+	import type { Icon } from 'lucide-svelte';
+	import SiteLogo from './SiteLogo.svelte';
 	import {
 		CircleHelp,
 		Computer,
@@ -113,7 +113,9 @@
 					<Moon />
 				{/if}
 			</button>
-			<a class="button button--side button--rectangle h-10" href="/dashboard/service"> Crear Servicio </a>
+			<a class="button button--side button--rectangle h-10" href="/dashboard/service">
+				Crear Servicio
+			</a>
 		</div>
 	</div>
 </header>

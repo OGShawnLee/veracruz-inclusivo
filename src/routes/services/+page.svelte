@@ -7,7 +7,7 @@
 		SearchRegionEnumeration,
 		SearchSchema
 	} from '@features/search/schema';
-	import { Bird } from "lucide-svelte";
+	import { Bird } from 'lucide-svelte';
 	import { superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 	import { useMousePosition, useWindowWidth } from '$lib/hooks.svelte';
@@ -18,7 +18,6 @@
 		validators: valibotClient(SearchSchema)
 	});
 	const { form: input } = form;
-
 	const { x } = useMousePosition();
 	const width = useWindowWidth();
 </script>
@@ -76,13 +75,13 @@
 									value={$input.region ?? 'ALL'}
 								/>
 							{:else}
-							<Select
-								enumeration={SearchRegionEnumeration}
-								label="Región"
-								hidden
-								placeholder="Seleccione una región"
-								value={$input.region ?? 'ALL'}
-							/>
+								<Select
+									enumeration={SearchRegionEnumeration}
+									label="Región"
+									hidden
+									placeholder="Seleccione una región"
+									value={$input.region ?? 'ALL'}
+								/>
 							{/if}
 						</Input.Root>
 					</Field>
@@ -92,19 +91,21 @@
 	</section>
 	<div class="grid gap-4">
 		{#if data.services.length === 0}
-		<div class="mx-auto flex flex-col gap-4 items-center">
-			<Bird class="transform -z-10 {x.value > width.value / 2 ? 'rotate-0' : 'rotate-y-180'}" size={256} strokeWidth={1.25} />
-			<div class="flex flex-col items-center gap-2">
-				<p class="heading text-2xl font-medium">
-					Sin Resultados
-				</p>
-				<p class="text-center">
-					Parece que no ha sido posible encontrar servicios que coincidan con su busqueda.
-				</p>
+			<div class="mx-auto flex flex-col gap-4 items-center">
+				<Bird
+					class="transform -z-10 {x.value > width.value / 2 ? 'rotate-0' : 'rotate-y-180'}"
+					size={256}
+					strokeWidth={1.25}
+				/>
+				<div class="flex flex-col items-center gap-2">
+					<p class="heading text-2xl font-medium">Sin Resultados</p>
+					<p class="text-center">
+						Parece que no ha sido posible encontrar servicios que coincidan con su busqueda.
+					</p>
+				</div>
 			</div>
-		</div>
 		{:else}
-		<h3 class="heading text-2xl font-medium">Resultados de Busqueda</h3>
+			<h3 class="heading text-2xl font-medium">Resultados de Busqueda</h3>
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{#each data.services as service (service.id)}
 					<ServiceCard {service} />

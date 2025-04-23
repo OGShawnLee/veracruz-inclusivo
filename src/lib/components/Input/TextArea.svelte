@@ -7,7 +7,14 @@
 		maxlength: number;
 	}
 
-	let { name, placeholder, value = $bindable(''), minlength = 0, maxlength, ...rest }: Properties = $props();
+	let {
+		name,
+		placeholder,
+		value = $bindable(''),
+		minlength = 0,
+		maxlength,
+		...rest
+	}: Properties = $props();
 </script>
 
 <textarea

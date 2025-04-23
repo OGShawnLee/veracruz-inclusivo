@@ -5,7 +5,7 @@
 		GraduationCap,
 		HeartHandshake,
 		LayoutList,
-		TvMinimalPlay as TVMinimalPlay,
+		TvMinimalPlay as TVMinimalPlay
 	} from 'lucide-svelte';
 	import { ImageAboutA1, ImageAboutA2, ImageAboutA3, ImageAboutWhoWeAre } from '$lib/assets';
 </script>
@@ -178,7 +178,7 @@
 					'Servicios',
 					'Si tu empresa o servicio general o educativo está comprometido con la inclusión, te invitamos a ser parte de nuestro directorio. Demuestra tu compromiso con una atención respetuosa y accesible.',
 					'Capacitados'
-			)}
+				)}
 			</div>
 		</section>
 	</div>

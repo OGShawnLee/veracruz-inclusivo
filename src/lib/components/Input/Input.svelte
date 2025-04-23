@@ -21,5 +21,5 @@
 	required
 	{value}
 	oninput={handleInput}
-  {...rest}
+	{...rest}
 />

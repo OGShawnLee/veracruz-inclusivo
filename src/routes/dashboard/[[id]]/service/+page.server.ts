@@ -1,55 +1,55 @@
-import { ServiceSchema } from "@features/service/schema";
-import { ServiceController } from "@features/service/controller";
-import { superValidate as validate } from "sveltekit-superforms/server";
-import { valibot } from "sveltekit-superforms/adapters";
-import { error, fail } from "@sveltejs/kit";
+import { ServiceSchema } from '@features/service/schema';
+import { ServiceController } from '@features/service/controller';
+import { superValidate as validate } from 'sveltekit-superforms/server';
+import { valibot } from 'sveltekit-superforms/adapters';
+import { error, fail } from '@sveltejs/kit';
 
 function isValidID(id: string) {
-  return /^\d+$/.test(id);
+	return /^\d+$/.test(id);
 }
 
 export async function load(event) {
-  if (event.params.id == undefined) {
-    return {
-      id: undefined,
-      form: await validate(valibot(ServiceSchema))
-    }
-  }
+	if (event.params.id == undefined) {
+		return {
+			id: undefined,
+			form: await validate(valibot(ServiceSchema))
+		};
+	}
 
-  if (isValidID(event.params.id)) {
-    const { data, error: err } = await ServiceController.getOne(Number(event.params.id));
-  
-    if (err) {
-      error(400, "Unable to fetch service.");
-    }
+	if (isValidID(event.params.id)) {
+		const { data, error: err } = await ServiceController.getOne(Number(event.params.id));
 
-    return { 
-      id: Number(event.params.id),
-      form: await validate(data, valibot(ServiceSchema))
-    }
-  }
+		if (err) {
+			error(400, 'Unable to fetch service.');
+		}
 
-  error(400, "Invalid ID.");
+		return {
+			id: Number(event.params.id),
+			form: await validate(data, valibot(ServiceSchema))
+		};
+	}
+
+	error(400, 'Invalid ID.');
 }
 
 export const actions = {
-  async default(event) {
-    const form = await validate(event, valibot(ServiceSchema));
+	async default(event) {
+		const form = await validate(event, valibot(ServiceSchema));
 
-    if (form.valid === false) {
-      return fail(400, form);
-    }
+		if (form.valid === false) {
+			return fail(400, form);
+		}
 
-    if (event.params.id === undefined) {
-      await ServiceController.createOne(form.data);
-      return;
-    }
-    
-    if (isValidID(event.params.id)) {
-      await ServiceController.updateOne(Number(event.params.id), form.data)
-      return;
-    }
-    
-    return fail(400, form);
-  }
-}
+		if (event.params.id === undefined) {
+			await ServiceController.createOne(form.data);
+			return;
+		}
+
+		if (isValidID(event.params.id)) {
+			await ServiceController.updateOne(Number(event.params.id), form.data);
+			return;
+		}
+
+		return fail(400, form);
+	}
+};

@@ -38,10 +38,13 @@
 	<div class="mt-auto grid gap-8">
 		{@render badge(formatPhoneNumber(service.phone_number), Headset)}
 		<div class="grid sm:grid-cols-2 gap-4">
-			<a class="button button--side button--rectangle gap-2 h-12 w-full" href="/dashboard/{service.id}/service">
+			<a
+				class="button button--side button--rectangle gap-2 h-12 w-full"
+				href="/dashboard/{service.id}/service"
+			>
 				<Edit size={20} />
 				Editar
-      </a>
+			</a>
 			<button class="button button--side button--rectangle gap-2 h-12 w-full">
 				<Trash size={20} />
 				Eliminar
