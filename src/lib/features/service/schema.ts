@@ -1,7 +1,6 @@
 import type { InferOutput } from "valibot";
 import { length, picklist, maxLength, minLength, object, pipe, string, transform, trim } from "valibot";
 
-
 function reduceSpacing(input: string) {
   return input.replace(/\s+/g, " ");
 }
@@ -14,12 +13,12 @@ export const ASSOCIATE_NAME_MAX_LENGTH = 256;
 export const ASSOCIATE_NAME_MIN_LENGTH = 16;
 export const PHONE_LENGTH = 10;
 
-export type ServiceCategory = "GASTRONOMY" | "EDUCATION" | "ENTERTAINMENT" | "BEAUTY-N-SELF-CARE" | "HEALTH-N-WELL-BEING" | "SMALL-COMMERCE" | "SPORTS";
+export type ServiceCategory = "GASTRONOMY" | "EDUCATION" | "ENTERNTAINMENT" | "BEAUTY-N-SELF-CARE" | "HEALTH-N-WELL-BEING" | "SMALL-COMMERCE" | "SPORTS";
 
 export const ServiceCategoryEnumeration: Record<ServiceCategory, string> = {
   GASTRONOMY: "Gastronomía",
   EDUCATION: "Educación",
-  ENTERTAINMENT: "Entretenimiento",
+  ENTERNTAINMENT: "Entretenimiento",
   "BEAUTY-N-SELF-CARE": "Belleza y Cuidado Personal",
   "HEALTH-N-WELL-BEING": "Salud y Bienestar",
   "SMALL-COMMERCE": "Comercio Minorista",

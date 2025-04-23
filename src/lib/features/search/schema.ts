@@ -6,7 +6,7 @@ export const SearchCategoryEnumeration: Record<ServiceCategory | 'ALL', string> 
   ALL: "Cualquier Categoría",
   GASTRONOMY: "Gastronomía",
   EDUCATION: "Educación",
-  ENTERTAINMENT: "Entretenimiento",
+  ENTERNTAINMENT: "Entretenimiento",
   "BEAUTY-N-SELF-CARE": "Belleza y Cuidado Personal",
   "HEALTH-N-WELL-BEING": "Salud y Bienestar",
   "SMALL-COMMERCE": "Comercio Minorista",
