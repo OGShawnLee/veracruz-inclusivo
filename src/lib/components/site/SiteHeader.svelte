@@ -1,6 +1,7 @@
 <script lang="ts">
+	import type { Icon } from "lucide-svelte";
+	import SiteLogo from "./SiteLogo.svelte"
 	import {
-		type Icon,
 		CircleHelp,
 		Computer,
 		Home,
@@ -12,8 +13,8 @@
 		Sun,
 		X
 	} from 'lucide-svelte';
-	import { mode, setMode, toggleMode } from 'mode-watcher';
 	import { Dialog } from 'bits-ui';
+	import { mode, setMode, toggleMode } from 'mode-watcher';
 
 	let open = false;
 </script>
@@ -21,8 +22,7 @@
 {#snippet logo()}
 	<span class="heading text-3xl font-chillax">
 		<a href="/" onclick={() => (open = false)}>
-			<span class="font-medium"> Veracruz </span>
-			<span class="$text-marque"> Inclusivo </span>
+			<SiteLogo />
 		</a>
 	</span>
 {/snippet}
