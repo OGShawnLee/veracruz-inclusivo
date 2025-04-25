@@ -106,7 +106,7 @@
 			</div>
 		{:else}
 			<h3 class="heading text-2xl font-medium">Resultados de Busqueda</h3>
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
 				{#each data.services as service (service.id)}
 					<ServiceCard {service} />
 				{/each}
