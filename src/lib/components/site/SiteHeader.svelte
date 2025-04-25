@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Icon } from 'lucide-svelte';
 	import SiteLogo from './SiteLogo.svelte';
+	import SiteSocialMedia from './SiteSocialMedia.svelte';
 	import {
 		CircleHelp,
 		Computer,
@@ -20,11 +21,9 @@
 </script>
 
 {#snippet logo()}
-	<span class="heading text-3xl font-chillax">
-		<a href="/" onclick={() => (open = false)}>
-			<SiteLogo />
-		</a>
-	</span>
+	<a href="/" onclick={() => (open = false)}>
+		<SiteLogo />
+	</a>
 {/snippet}
 
 {#snippet link(href: string, label: string)}
@@ -69,9 +68,9 @@
 			</Dialog.Trigger>
 			<Dialog.Portal>
 				<Dialog.Content
-					class="fixed top-0 bottom-0 inset-x-0 z-20 bg-ground-0/75 backdrop-filter backdrop-blur-lg border-b border-ground-2 dark:(bg-ground-0-dark/75 border-ground-2-dark)"
+					class="fixed top-0 bottom-0 inset-x-0 pb-8 z-20 flex flex-col bg-ground-0/75 backdrop-filter backdrop-blur-lg border-b border-ground-2 dark:(bg-ground-0-dark/75 border-ground-2-dark)"
 				>
-					<header
+				<header
 						class="container h-20 flex items-center justify-between border-b border-b-ground-2 dark:(border-b-ground-2-dark)"
 					>
 						{@render logo()}
@@ -102,6 +101,9 @@
 							{@render mobileLink('/dashboard/create-service', 'Crear Servicio', Plus)}
 						</ul>
 					</nav>
+					<div class="mt-auto">
+						<SiteSocialMedia />
+					</div>
 				</Dialog.Content>
 			</Dialog.Portal>
 		</Dialog.Root>
