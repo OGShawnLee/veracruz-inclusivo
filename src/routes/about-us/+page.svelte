@@ -170,7 +170,7 @@
 					'Capacitadores'
 				)}
 				{@render cardImageless(
-					'Aliados Estratéticos',
+					'Aliados Estratégicos',
 					'Instituciones públicas y empresas que comparten nuestra visión pueden convertirse en aliados estratégicos. Tu apoyo en términos de instalaciones, personal, vinculación, difusión o recursos materiales es fundamental para ampliar nuestro impacto.',
 					'Instituciones y Empresas'
 				)}
