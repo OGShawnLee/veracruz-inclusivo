@@ -13,6 +13,7 @@ export default defineConfig({
 		'button--side': '$bg-ground-2 $text-summit hover:$bg-ground-3',
 		'button--rectangle': 'px-4',
 		'button--main': 'bg-ground-0-dark text-summit-dark dark:bg-ground-0 dark:text-summit',
+		"button-square": "flex items-center justify-center size-10 bg-transparent",
 		// button:
 		// 	'flex items-center justify-center $text-summit font-medium rounded-lg transition-colors duration-150 focus:(outline-none ring-2 ring-summit dark:ring-summit-dark)',
 		// 'button--main': 'bg-ground-0-dark text-summit-dark dark:bg-ground-0 dark:text-summit',

@@ -10,9 +10,10 @@
 		hidden?: boolean;
 		placeholder: string;
 		value?: T;
+		onValueChange?: (value: string) => void;
 	}
 
-	let { enumeration, label, hidden, placeholder, value = $bindable() }: Properties = $props();
+	let { enumeration, label, hidden, placeholder, value = $bindable(), onValueChange }: Properties = $props();
 
 	const entries = Object.entries(enumeration) as [T, string][];
 	const selected = $derived(value ? enumeration[value] : placeholder);
@@ -22,7 +23,7 @@
 	{#snippet children({ props })}
 		<Input.Group>
 			<Input.Label for={props.name} {label} {hidden} />
-			<Select.Root type="single" bind:value name={props.name}>
+			<Select.Root type="single" bind:value name={props.name} {onValueChange}>
 				<Select.Trigger
 					class="h-12 px-4 flex items-center justify-between gap-4 $bg-ground-1 border $border-ground-2 rounded-lg $text-summit text-left hover:$bg-ground-2"
 					{...props}

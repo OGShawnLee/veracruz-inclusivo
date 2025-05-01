@@ -1,6 +1,6 @@
 import { getKeysOf } from '$lib';
 import type { ServiceCategory, ServiceRegion } from '@features/service/schema';
-import { object, nullable, picklist, pipe, string, minLength, maxLength } from 'valibot';
+import { object, nullable, picklist, pipe, string, minLength, maxLength, number, minSize, digits, transform, integer, toMinValue, toMaxValue } from 'valibot';
 
 export const SearchCategoryEnumeration: Record<ServiceCategory | 'ALL', string> = {
 	ALL: 'Cualquier Categoría',
@@ -40,5 +40,15 @@ export const SearchSchema = object({
 			getKeysOf(SearchRegionEnumeration),
 			'La región debe ser una de las siguientes: Norte, Centro, Sur.'
 		)
-	)
+	),
+	page: nullable(
+		pipe(
+			string('El número de página debe ser un número.'),
+			digits('El número de página debe ser un número entero positivo.'),
+			transform((value) => parseInt(value)),
+			integer('El número de página debe ser un número entero positivo.'),
+			toMinValue(1),
+		),
+		"1"
+	),
 });

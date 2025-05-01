@@ -8,9 +8,10 @@
 		label: string;
 		hidden?: boolean;
 		value: T;
+		onValueChange?: (value: string) => void;
 	}
 
-	let { enumeration, label, hidden, value = $bindable() }: Properties = $props();
+	let { enumeration, label, hidden, value = $bindable(), onValueChange }: Properties = $props();
 
 	const entries = Object.entries(enumeration) as [T, string][];
 </script>
@@ -23,6 +24,7 @@
 				class="w-full flex flex-wrap items-center gap-2 sm:(w-fit justify-center)"
 				orientation="horizontal"
 				name={props.name}
+				onValueChange={onValueChange}
 				bind:value
 			>
 				{#each entries as [value, label]}

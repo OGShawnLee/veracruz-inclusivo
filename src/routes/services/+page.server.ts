@@ -9,18 +9,20 @@ export async function load(event) {
 	const form = await validate(event.url.searchParams, valibot(SearchSchema));
 
 	if (form.valid) {
-		const { data, error: err } = await ServiceController.searchMany({
+		const limit = 12;
+		const { data, count = 0, error: err } = await ServiceController.searchMany({
 			query: form.data.query,
-			limit: 10,
+			limit: limit,
 			region: form.data.region === 'ALL' ? undefined : form.data.region,
-			category: form.data.category === 'ALL' ? undefined : form.data.category
+			category: form.data.category === 'ALL' ? undefined : form.data.category,
+			page: form.data.page
 		});
 
 		if (err) {
 			error(500, 'Error fetching services');
 		}
 
-		return { form, services: data as ServiceData[] };
+		return { count: count as number, form, perPage: limit, services: data as ServiceData[] };
 	}
 
 	error(400, 'Invalid Search Query');

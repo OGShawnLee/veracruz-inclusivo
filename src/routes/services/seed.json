@@ -1,0 +1,123 @@
+[
+  {
+    "id": 11,
+    "name": "Tienda de Tamales Doña Camilla",
+    "description": "Una tienda que ofrece trabajo a personas con autismo y cuenta con un repertorio de alimentos tanto para personas vegetarianas como veganas.",
+    "associate_full_name": "Doña Camilla Reyes Castillo",
+    "phone_number": "2231404530",
+    "created_at": "2025-04-20T19:01:07.932003",
+    "full_text_search": "'aliment':21 'autism':14 'camill':5 'cuent':16 'doñ':4 'ofrec':9 'person':12,24 'repertori':19 'tamal':3 'tiend':1,7 'trabaj':10 'vegan':27 'vegetarian':25",
+    "category": "GASTRONOMY",
+    "region": "SOUTH"
+  },
+  {
+    "id": 10,
+    "name": "Salón de Belleza La Mona China",
+    "description": "Un salón de belleza con personal capacitado para atender a personas con dificultades mentales como el autismo.",
+    "associate_full_name": "Diana Esmeralda Carmona García",
+    "phone_number": "2251304490",
+    "created_at": "2025-04-19T00:42:17.761691",
+    "full_text_search": "'atend':15 'autism':23 'bellez':3,10 'capacit':13 'chin':6 'dificultad':19 'mental':20 'mon':5 'person':17 'personal':12 'salon':1,8",
+    "category": "BEAUTY-N-SELF-CARE",
+    "region": "SOUTH"
+  },
+  {
+    "id": 9,
+    "name": "Restaurante de Doña Lucha",
+    "description": "El Restaurante de Doña Lucha proporciona descuentos de hasta el 20% a personas con discapacidades físicas.",
+    "associate_full_name": "Doña Lucha Sierra Leona",
+    "phone_number": "2251304090",
+    "created_at": "2025-04-19T00:12:41.036559",
+    "full_text_search": "'20':15 'descuent':11 'discapac':19 'doñ':3,8 'fisic':20 'luch':4,9 'person':17 'proporcion':10 'restaur':1,6",
+    "category": "GASTRONOMY",
+    "region": "CENTRE"
+  },
+  {
+    "id": 8,
+    "name": "Autismo Center Care",
+    "description": "Un centro de atención medica especializada en atender personas con padecimientos de autismo.",
+    "associate_full_name": "Jorge Irán Seguin Luna",
+    "phone_number": "2281904500",
+    "created_at": "2025-04-17T19:21:07.521986",
+    "full_text_search": "'atencion':7 'atend':11 'autism':1,16 'car':3 'cent':2 'centr':5 'especializ':9 'medic':8 'padec':14 'person':12",
+    "category": "HEALTH-N-WELL-BEING",
+    "region": "CENTRE"
+  },
+  {
+    "id": 7,
+    "name": "Tienda Aprobadora",
+    "description": "Tienda Aprobadora es una tienda que permite el acceso a personas con dificultades mentales.",
+    "associate_full_name": "Luis Donaldo Ortiz García",
+    "phone_number": "2281909589",
+    "created_at": "2025-04-17T19:17:05.805684",
+    "full_text_search": "'acces':11 'aprob':2,4 'dificultad':15 'mental':16 'permit':9 'person':13 'tiend':1,3,7",
+    "category": "SMALL-COMMERCE",
+    "region": "CENTRE"
+  },
+  {
+    "id": 6,
+    "name": "Bodega Aurrera Max",
+    "description": "Bodega Aurrera es una supermercado que ofrece empleos a personas con discapacidades físicas.",
+    "associate_full_name": "Vicente Mario Ramírez Seguin",
+    "phone_number": "2281909590",
+    "created_at": "2025-04-17T19:17:05.710265",
+    "full_text_search": "'aurrer':2,5 'bodeg':1,4 'discapac':15 'emple':11 'fisic':16 'max':3 'ofrec':10 'person':13 'supermerc':8",
+    "category": "SMALL-COMMERCE",
+    "region": "NORTH"
+  },
+  {
+    "id": 5,
+    "name": "Abarrotes Don Chui",
+    "description": "Abarrotes Don Chui es una tienda que ofrece descuentos a personas que han servido en la guerra contra el narcotráfico.",
+    "associate_full_name": "Don Chui Ramírez Seguin",
+    "phone_number": "2281909590",
+    "created_at": "2025-04-17T19:17:05.601842",
+    "full_text_search": "'abarrot':1,4 'chui':3,6 'descuent':12 'don':2,5 'guerr':20 'narcotraf':23 'ofrec':11 'person':14 'serv':17 'tiend':9",
+    "category": "SMALL-COMMERCE",
+    "region": "CENTRE"
+  },
+  {
+    "id": 4,
+    "name": "La Tampiqueña Restaurante",
+    "description": "La Tampiqueña Restaurante cuenta con un ambiente amigable favorable para personas con autismo.",
+    "associate_full_name": "Romina Roxana Cebada Martínez",
+    "phone_number": "2281909590",
+    "created_at": "2025-04-17T19:17:05.496273",
+    "full_text_search": "'ambient':10 'amig':11 'autism':16 'cuent':7 'favor':12 'person':14 'restaur':3,6 'tampiqueñ':2,5",
+    "category": "GASTRONOMY",
+    "region": "NORTH"
+  },
+  {
+    "id": 3,
+    "name": "Panaderia Arenita",
+    "description": "La Panaderia Arenita es una panaderia que contrata a personas con autismo.",
+    "associate_full_name": "Elena de Troya Ortiz Tlapa",
+    "phone_number": "2288404045",
+    "created_at": "2025-04-17T19:17:05.264893",
+    "full_text_search": "'arenit':2,5 'autism':14 'contrat':10 'panaderi':1,4,8 'person':12",
+    "category": "SMALL-COMMERCE",
+    "region": "CENTRE"
+  },
+  {
+    "id": 2,
+    "name": "Escuela Secundaria Roberto Gómez Bolaños",
+    "description": "La Escuela Secundaria Robert Gómez Bolaños es una escuela privada con académicos capacitados en el lenguaje de señas y el tratado de niños con trastornos de neurodivergencia.",
+    "associate_full_name": "Luis Donaldo Ortiz García",
+    "phone_number": "2281909590",
+    "created_at": "2025-04-17T19:17:05.039631",
+    "full_text_search": "'academ':17 'bolañ':5,11 'capacit':18 'escuel':1,7,14 'gomez':4,10 'lenguaj':21 'neurodivergent':32 'niñ':28 'priv':15 'robert':3,9 'secundari':2,8 'señ':23 'trastorn':30 'trat':26",
+    "category": "SMALL-COMMERCE",
+    "region": "CENTRE"
+  },
+  {
+    "id": 1,
+    "name": "Campamento de Verano Chayote Dorado",
+    "description": "Un campamento de verano con personal profesional capacitado en la supervisión y educación de niños y adolescentes con necesidades especiales.",
+    "associate_full_name": "John China Dragon",
+    "phone_number": "2281404090",
+    "created_at": "2025-04-17T19:17:04.758508",
+    "full_text_search": "'adolescent':22 'campament':1,7 'capacit':13 'chayot':4 'dor':5 'educ':18 'especial':25 'neces':24 'niñ':20 'personal':11 'profesional':12 'supervision':16 'veran':3,9",
+    "category": "HEALTH-N-WELL-BEING",
+    "region": "CENTRE"
+  }
+]

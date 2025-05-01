@@ -1,4 +1,5 @@
 <script>
+	import Pagination from "./pagination-section.svelte"
 	import { Input, Radio, Select } from '@components';
 	import { Field, Control } from 'formsnap';
 	import { ServiceCard } from '@features/service/components';
@@ -11,6 +12,7 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 	import { useMousePosition, useWindowWidth } from '$lib/hooks.svelte';
+	import { goto } from "$app/navigation";
 
 	const { data } = $props();
 
@@ -62,6 +64,14 @@
 								hidden
 								placeholder="Seleccione una categoria"
 								value={$input.category ?? 'ALL'}
+								onValueChange={(value) => {
+									const url = new URL(window.location.href);
+									url.searchParams.set('category', value);
+									url.searchParams.set('page', '1');
+									goto(url.toString(), {
+										noScroll: true
+									});
+								}}
 							/>
 						</Field>
 					</Input.Root>
@@ -73,6 +83,14 @@
 									label="Región"
 									hidden
 									value={$input.region ?? 'ALL'}
+									onValueChange={(value) => {
+										const url = new URL(window.location.href);
+										url.searchParams.set('region', value);
+										url.searchParams.set('page', '1');
+										goto(url.toString(), {
+											noScroll: true
+										});
+									}}
 								/>
 							{:else}
 								<Select
@@ -111,6 +129,7 @@
 					<ServiceCard {service} />
 				{/each}
 			</div>
+			<Pagination count={data.count} bind:page={$input.page} perPage={data.perPage} />
 		{/if}
 	</div>
 </main>

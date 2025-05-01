@@ -8,6 +8,7 @@ interface FilterSearch {
 	limit?: Nullish<number>;
 	region?: Nullish<string>;
 	category?: Nullish<string>;
+	page?: Nullish<number>;
 }
 
 export namespace ServiceController {
@@ -24,11 +25,18 @@ export namespace ServiceController {
 	}
 
 	export function searchMany(filter: FilterSearch) {
+		const limit = filter.limit ?? 10;
+
 		let request = db
 			.from('service')
-			.select('*')
+			.select('*', { count: 'exact' })
 			.order('created_at', { ascending: false })
-			.limit(filter.limit ?? 10);
+			.limit(limit);
+
+		if (filter.page) {
+			const offset = (filter.page - 1) * limit;
+			request = request.range(offset, offset + limit - 1);
+		}
 
 		if (filter.category) {
 			request = request.filter('category', 'eq', filter.category);
