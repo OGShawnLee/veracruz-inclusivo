@@ -37,7 +37,7 @@
 >
 	{#each $toasts as { id, data } (id)}
 		<div
-			class="relative p-4 flex items-center gap-8 $bg-ground-1 rounded-md border $border-ground-2"
+			class="relative p-4 flex items-center gap-8 $bg-ground-1 rounded-md border $border-ground-2 shadow-lg"
 			animate:flip={{ duration: 450 }}
 			transition:fly={{ y: 150, duration: 150 }}
 			{...$content(id)}
