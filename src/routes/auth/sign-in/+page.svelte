@@ -5,10 +5,22 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 	import { SignInSchema } from '@features/auth/schema';
+	import { createToast } from '@components/site';
 
 	const { data } = $props();
 	const form = superForm(data.form, {
-		validators: valibotClient(SignInSchema)
+		validators: valibotClient(SignInSchema),
+		onResult(event) {
+			if (event.result.type === 'error') {
+				createToast({
+					data: {
+						title: 'Error al Iniciar Sesión',
+						description: event.result.error.message,
+						type: 'ERROR'
+					}
+				});
+			}
+		}
 	});
 	const { form: input, enhance } = form;
 </script>
@@ -18,11 +30,9 @@
 </svelte:head>
 
 <main class="container">
-	<div class="max-w-2xl mx-auto rounded-xl $bg-ground-1 border $border-ground-2">
+	<div class="max-w-xl mx-auto rounded-xl $bg-ground-1 border $border-ground-2">
 		<div class="h-20 px-8 flex items-center justify-between border-b $border-ground-2">
-			<h1 class="heading text-2xl font-bold">
-        Iniciar Sesión
-			</h1>
+			<h1 class="heading text-2xl font-bold">Iniciar Sesión</h1>
 			<a class="button button--side size-10" href="/">
 				<X />
 			</a>
@@ -56,7 +66,7 @@
 									placeholder="Introduzca su contraseña"
 									bind:value={$input.password}
 									{...props}
-                  type="password"
+									type="password"
 								/>
 							</Input.Group>
 						{/snippet}
@@ -64,12 +74,10 @@
 					<Input.Error />
 				</Field>
 			</Input.Root>
-      <div class="flex flex-col items-center gap-4">
-        <button class="w-full button button--main h-12" type="submit">
-          Iniciar Sesión
-        </button>
-        <a href="/auth/sign-up">¿No tiene una cuenta?</a>
-      </div>
+			<div class="flex flex-col items-center gap-4">
+				<button class="w-full button button--main h-12" type="submit"> Iniciar Sesión </button>
+				<a href="/auth/sign-up">¿No tiene una cuenta?</a>
+			</div>
 		</form>
 	</div>
 </main>

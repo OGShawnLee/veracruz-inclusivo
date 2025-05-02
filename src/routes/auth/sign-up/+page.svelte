@@ -5,10 +5,30 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 	import { AccountSchema } from '@features/auth/schema';
+	import { createToast } from '@components/site';
 
 	const { data } = $props();
 	const form = superForm(data.form, {
-		validators: valibotClient(AccountSchema)
+		validators: valibotClient(AccountSchema),
+		onResult(event) {
+			if (event.result.type === 'success' || event.result.type === 'redirect') {
+				createToast({
+					data: {
+						title: 'Registro Exitoso',
+						description: 'Su cuenta ha sido registrada correctamente, por favor inicie sesión.',
+						type: 'SUCCESS'
+					}
+				});
+			} else if (event.result.type === 'error') {
+				createToast({
+					data: {
+						title: 'Error al Registrar Usuario',
+						description: event.result.error.message,
+						type: 'ERROR'
+					}
+				});
+			}
+		}
 	});
 	const { form: input, enhance } = form;
 </script>
@@ -18,11 +38,9 @@
 </svelte:head>
 
 <main class="container">
-	<div class="max-w-2xl mx-auto rounded-xl $bg-ground-1 border $border-ground-2">
+	<div class="max-w-xl mx-auto rounded-xl $bg-ground-1 border $border-ground-2">
 		<div class="h-20 px-8 flex items-center justify-between border-b $border-ground-2">
-			<h1 class="heading text-2xl font-bold">
-				Registrar Cuenta
-			</h1>
+			<h1 class="heading text-2xl font-bold">Registrar Cuenta</h1>
 			<a class="button button--side size-10" href="/">
 				<X />
 			</a>
@@ -73,7 +91,7 @@
 									placeholder="Introduzca su contraseña"
 									bind:value={$input.password}
 									{...props}
-                  type="password"
+									type="password"
 								/>
 							</Input.Group>
 						{/snippet}
@@ -81,12 +99,10 @@
 					<Input.Error />
 				</Field>
 			</Input.Root>
-	    <div class="flex flex-col items-center gap-4">
-        <button class="w-full button button--main h-12" type="submit">
-          Terminar Registro
-        </button>
-        <a href="/auth/sign-in">¿Ya tiene una cuenta?</a>
-      </div>
+			<div class="flex flex-col items-center gap-4">
+				<button class="w-full button button--main h-12" type="submit"> Terminar Registro </button>
+				<a href="/auth/sign-in">¿Ya tiene una cuenta?</a>
+			</div>
 		</form>
 	</div>
 </main>

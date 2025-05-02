@@ -1,7 +1,7 @@
 <script lang="ts">
 	import 'virtual:uno.css';
 	import '@unocss/reset/tailwind-compat.css';
-	import { SiteFooter, SiteHeader } from '@components/site';
+	import { SiteFooter, SiteHeader, SiteToaster } from '@components/site';
 	import { ModeWatcher } from 'mode-watcher';
 	import { CurrentUserState } from '$lib/state';
 
@@ -14,6 +14,7 @@
 </script>
 
 <SiteHeader />
+<SiteToaster />
 <ModeWatcher defaultMode="system" />
 <div class="mt-38 mb-18">
 	{@render children()}

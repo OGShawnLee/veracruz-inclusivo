@@ -11,10 +11,30 @@
 	import { Input, Select } from '@components';
 	import { superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
+	import { createToast } from '@components/site';
 
 	const { data } = $props();
 	const form = superForm(data.form, {
-		validators: valibotClient(ServiceSchema)
+		validators: valibotClient(ServiceSchema),
+		onResult(event) {
+			if (event.result.type === 'success' || event.result.type === 'redirect') {
+				createToast({
+					data: {
+						title: data.id ? 'Servicio Actualizado' : 'Servicio Registrado',
+						description: data.id ? 'El servicio ha sido actualizado correctamente.' : 'El servicio ha sido registrado correctamente.',
+						type: 'SUCCESS'
+					}
+				});
+			} else if (event.result.type === 'error') {
+				createToast({
+					data: {
+						title: data.id ? 'Error al Actualizar Servicio' : 'Error al Registrar Servicio',
+						description: data.id ? 'No ha sido posible actualizar servicio, intente más tarde.' : 'No ha sido posible registrar servicio, intente más tarde.',
+						type: 'ERROR'
+					}
+				});
+			}
+		}
 	});
 	const { form: input, enhance } = form;
 </script>

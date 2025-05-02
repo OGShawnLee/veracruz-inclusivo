@@ -22,7 +22,7 @@ export const actions = {
     const { data, error: err } = await AuthDAO.findUserByEmail(form.data.email);
 
     if (err) {
-      throw error(400, 'No ha sido posible registrar su usuario, intente más tarde.');
+      throw error(500, 'No ha sido posible acceder a su cuenta, intente más tarde.');
     }
 
     if (data) {

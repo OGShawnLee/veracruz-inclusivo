@@ -31,7 +31,7 @@ export const actions = {
         return setError(form, 'email', 'Ya existe un usuario con ese correo electrónico.');
       }
 
-      throw error(400, 'No ha sido posible registrar su usuario, intente más tarde.');
+      throw error(500, 'No ha sido posible registrar su usuario, intente más tarde.');
     }
 
     throw redirect(303, '/auth/sign-in');
