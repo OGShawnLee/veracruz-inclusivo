@@ -20,11 +20,11 @@
 </div>
 <SiteFooter />
 
-<style>
-	
+<style>	
 	:global(body) {
-		--uno: '$bg-ground-0 font-satoshi $text-common';
+		--uno: "min-h-screen flex flex-col $bg-ground-0 font-satoshi $text-common";
 	}
+
 
 	:global(button, [type='button'], [type='reset'], [type='submit']) {
 		background-image: none;

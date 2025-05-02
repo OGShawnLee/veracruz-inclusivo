@@ -17,7 +17,7 @@
 	</a>
 {/snippet}
 
-<footer class="py-12 border-t $border-ground-2">
+<footer class="mt-auto py-12 border-t $border-ground-2">
 	<div class="container flex flex-col items-center gap-4 md:(flex-row gap-16)">
 		<a href="/">
 			<SiteLogo />
