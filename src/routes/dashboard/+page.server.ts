@@ -1,9 +1,9 @@
 import type { ServiceData } from '@features/service/schema';
-import { ServiceController } from '@features/service/controller';
+import { ServiceDAO } from '@features/service/controller';
 import { error } from '@sveltejs/kit';
 
 export async function load(event) {
-	const { data, error: err } = await ServiceController.getMany(10);
+	const { data, error: err } = await ServiceDAO.getMany(10);
 
 	if (err) {
 		error(500, 'Error fetching services');

@@ -14,7 +14,7 @@
   });
 }}>
 	{#snippet children({ pages, range })}
-		<div class="my-8 flex items-center justify-center">
+		<div class="my-16 flex items-center justify-center">
 			<Pagination.PrevButton class="button-chevron sm:mr-8">
 				<ChevronLeft/>
 			</Pagination.PrevButton>

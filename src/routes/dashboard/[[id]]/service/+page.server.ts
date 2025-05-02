@@ -1,5 +1,5 @@
 import { ServiceSchema } from '@features/service/schema';
-import { ServiceController } from '@features/service/controller';
+import { ServiceDAO } from '@features/service/controller';
 import { superValidate as validate } from 'sveltekit-superforms/server';
 import { valibot } from 'sveltekit-superforms/adapters';
 import { error, fail } from '@sveltejs/kit';
@@ -17,7 +17,7 @@ export async function load(event) {
 	}
 
 	if (isValidID(event.params.id)) {
-		const { data, error: err } = await ServiceController.getOne(Number(event.params.id));
+		const { data, error: err } = await ServiceDAO.getOne(Number(event.params.id));
 
 		if (err) {
 			error(400, 'Unable to fetch service.');
@@ -41,12 +41,12 @@ export const actions = {
 		}
 
 		if (event.params.id === undefined) {
-			await ServiceController.createOne(form.data);
+			await ServiceDAO.createOne(form.data);
 			return;
 		}
 
 		if (isValidID(event.params.id)) {
-			await ServiceController.updateOne(Number(event.params.id), form.data);
+			await ServiceDAO.updateOne(Number(event.params.id), form.data);
 			return;
 		}
 

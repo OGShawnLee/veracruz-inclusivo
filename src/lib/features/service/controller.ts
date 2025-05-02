@@ -11,7 +11,7 @@ interface FilterSearch {
 	page?: Nullish<number>;
 }
 
-export namespace ServiceController {
+export namespace ServiceDAO {
 	export function createOne(data: ServiceData) {
 		return db.from('service').insert(data).select('id');
 	}

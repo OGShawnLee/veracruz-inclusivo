@@ -8,14 +8,19 @@
 		Home,
 		LayoutDashboard,
 		LayoutList,
+		LogOut,
 		Menu,
 		Moon,
 		Plus,
 		Sun,
 		X
 	} from 'lucide-svelte';
+	import { CurrentUserState } from '$lib/state';
 	import { Dialog } from 'bits-ui';
 	import { mode, setMode, toggleMode } from 'mode-watcher';
+	import { enhance } from '$app/forms';
+
+	const currentUser = CurrentUserState.getContext();
 
 	let open = false;
 </script>
@@ -70,7 +75,7 @@
 				<Dialog.Content
 					class="fixed top-0 bottom-0 inset-x-0 pb-8 z-20 flex flex-col bg-ground-0/75 backdrop-filter backdrop-blur-lg border-b border-ground-2 dark:(bg-ground-0-dark/75 border-ground-2-dark)"
 				>
-				<header
+					<header
 						class="container h-20 flex items-center justify-between border-b border-b-ground-2 dark:(border-b-ground-2-dark)"
 					>
 						{@render logo()}
@@ -80,6 +85,26 @@
 					</header>
 					<nav class="py-8">
 						<ul class="grid gap-4">
+							{#if currentUser.value}
+								<div class="h-12 mx-2 px-2 flex items-center gap-4">
+									<div
+										class="size-10 flex items-center justify-center rounded-md bg-gradient-to-r from-marque to-marque-dark font-bold text-summit-dark"
+									>
+										{currentUser.value.name[0].toUpperCase()}
+									</div>
+									<p class="font-medium $text-summit">{currentUser.value.name}</p>
+									<form class="ml-auto" action="/auth/sign-out" method="post" use:enhance>
+										<button
+											class="button button--side size-10"
+											type="submit"
+											aria-label="Cerrar Sesión"
+										>
+										<p class="sr-only">Cerrar Sesión</p>
+											<LogOut size={20} />	
+										</button>
+									</form>
+								</div>
+							{/if}
 							{@render mobileLink('/', 'Inicio', Home)}
 							{@render mobileLink('/services', 'Servicios', LayoutList)}
 							{@render mobileLink('/dashboard', 'Dashboard', LayoutDashboard)}
@@ -115,9 +140,19 @@
 					<Moon />
 				{/if}
 			</button>
-			<a class="button button--side button--rectangle h-10" href="/dashboard/service">
-				Crear Servicio
-			</a>
+			{#if currentUser.value}
+				<a class="button button--side button--rectangle h-10" href="/dashboard/service">
+					Crear Servicio
+				</a>
+				<form action="/auth/sign-out" method="post" use:enhance>
+					<button
+						class="size-10 flex items-center justify-center rounded-md bg-gradient-to-r from-marque to-marque-dark font-bold text-summit-dark"
+						aria-label="Cerrar Sesión"
+					>
+						{currentUser.value.name[0].toUpperCase()}
+					</button>
+				</form>
+			{/if}
 		</div>
 	</div>
 </header>

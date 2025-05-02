@@ -1,10 +1,13 @@
 <script lang="ts">
 	import type { ServiceData } from '@features/service/schema';
 	import type { Icon } from 'lucide-svelte';
+	import { CurrentUserState } from '$lib/state';
 	import { Edit, Earth, Headset, Trash } from 'lucide-svelte';
 	import { ServiceCategoryEnumeration, ServiceRegionEnumeration } from '@features/service/schema';
 
-	export const { service }: { service: ServiceData } = $props();
+	const { service }: { service: ServiceData } = $props();
+
+	const currentUser = CurrentUserState.getContext();
 
 	function formatPhoneNumber(phoneNumber: string): string {
 		return phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
@@ -37,18 +40,20 @@
 	</div>
 	<div class="mt-auto grid gap-8">
 		{@render badge(formatPhoneNumber(service.phone_number), Headset)}
-		<div class="grid sm:grid-cols-2 gap-4">
-			<a
-				class="button button--side button--rectangle gap-2 h-12 w-full"
-				href="/dashboard/{service.id}/service"
-			>
-				<Edit size={20} />
-				Editar
-			</a>
-			<button class="button button--side button--rectangle gap-2 h-12 w-full">
-				<Trash size={20} />
-				Eliminar
-			</button>
-		</div>
+		{#if currentUser.value}
+			<div class="grid sm:grid-cols-2 gap-4">
+				<a
+					class="button button--side button--rectangle gap-2 h-12 w-full"
+					href="/dashboard/{service.id}/service"
+				>
+					<Edit size={20} />
+					Editar
+				</a>
+				<button class="button button--side button--rectangle gap-2 h-12 w-full">
+					<Trash size={20} />
+					Eliminar
+				</button>
+			</div>
+		{/if}
 	</div>
 </article>

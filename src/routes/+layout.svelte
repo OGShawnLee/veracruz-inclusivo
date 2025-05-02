@@ -3,8 +3,14 @@
 	import '@unocss/reset/tailwind-compat.css';
 	import { SiteFooter, SiteHeader } from '@components/site';
 	import { ModeWatcher } from 'mode-watcher';
+	import { CurrentUserState } from '$lib/state';
 
-	const { children } = $props();
+	const { data, children } = $props();
+	const currentUser = CurrentUserState.mount(data.currentUser);
+
+	$effect(() => {
+		currentUser.value = data.currentUser;
+	});
 </script>
 
 <SiteHeader />

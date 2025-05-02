@@ -39,7 +39,7 @@
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
-			"esbuild"
+			"bcrypt"
 		]
 	}
 }

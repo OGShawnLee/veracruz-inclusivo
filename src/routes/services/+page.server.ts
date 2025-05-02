@@ -1,6 +1,6 @@
 import type { ServiceData } from '@features/service/schema';
 import { SearchSchema } from '@features/search/schema';
-import { ServiceController } from '@features/service/controller';
+import { ServiceDAO } from '@features/service/controller';
 import { superValidate as validate } from 'sveltekit-superforms/server';
 import { valibot } from 'sveltekit-superforms/adapters';
 import { error } from '@sveltejs/kit';
@@ -10,7 +10,7 @@ export async function load(event) {
 
 	if (form.valid) {
 		const limit = 12;
-		const { data, count = 0, error: err } = await ServiceController.searchMany({
+		const { data, count = 0, error: err } = await ServiceDAO.searchMany({
 			query: form.data.query,
 			limit: limit,
 			region: form.data.region === 'ALL' ? undefined : form.data.region,
