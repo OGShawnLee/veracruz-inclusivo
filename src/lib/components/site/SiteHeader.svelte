@@ -123,7 +123,7 @@
 									</button>
 								</div>
 							</div>
-							{@render mobileLink('/dashboard/create-service', 'Crear Servicio', Plus)}
+							{@render mobileLink('/dashboard/service', 'Crear Servicio', Plus)}
 						</ul>
 					</nav>
 					<div class="mt-auto">
