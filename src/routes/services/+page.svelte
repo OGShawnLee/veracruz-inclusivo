@@ -119,7 +119,7 @@
 		{#if data.services.length === 0}
 			<div class="mx-auto flex flex-col gap-4 items-center">
 				<Bird
-					class="transform -z-10 {x.value > width.value / 2 ? 'rotate-0' : 'rotate-y-180'}"
+					class="transform -z-10 opacity-05 {x.value > width.value / 2 ? 'rotate-0' : 'rotate-y-180'}"
 					size={256}
 					strokeWidth={1.25}
 				/>

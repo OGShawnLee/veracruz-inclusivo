@@ -9,7 +9,7 @@
 
 <main class="mx-auto flex flex-col gap-4 items-center">
 	<Rabbit
-		class="transform -z-10 {x.value > width.value / 2 ? 'rotate-0' : 'rotate-y-180'}"
+		class="transform opacity-05 -z-10 {x.value > width.value / 2 ? 'rotate-0' : 'rotate-y-180'}"
 		size={256}
 		strokeWidth={1.25}
 	/>
