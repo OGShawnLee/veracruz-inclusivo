@@ -13,4 +13,8 @@ export namespace AuthDAO {
       password: dataObject.password
     }).select('*').single();
   }
+
+  export function incrementRefreshTokenVersion(email: string) {
+    return db.rpc('increment_refresh_token_version', { in_email: email });
+  }
 }

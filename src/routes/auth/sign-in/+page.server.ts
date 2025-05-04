@@ -27,7 +27,7 @@ export const actions = {
 
     if (data) {
       if (await auth.hasPasswordMatch(form.data.password, data.password)) {
-        auth.signIn(event.cookies, { id: data.email, email: data.email });
+        auth.signIn(event.cookies, { id: data.email, email: data.email }, data.refresh_token_version);
         throw redirect(303, '/services');
       }
 

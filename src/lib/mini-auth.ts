@@ -4,49 +4,80 @@ import type { Cookies, Handle } from "@sveltejs/kit";
 import type { Result } from "$lib";
 import { redirect } from "@sveltejs/kit";
 import { isEmpty, isNullish, useAwait, useCatch } from "$lib";
+import { integer, minValue, number, object, parse, pipe, string, transform } from "valibot";
 
 export interface AuthClientConfiguration<P, U> {
   env: {
     ACCESS_TOKEN: string;
     ACCESS_TOKEN_EXPIRES_IN: JWT.SignOptions["expiresIn"];
     ACCESS_COOKIE_NAME: string;
+    REFRESH_TOKEN: string;
+    REFRESH_TOKEN_EXPIRES_IN: JWT.SignOptions["expiresIn"];
+    REFRESH_COOKIE_NAME: string;
   },
   findCurrentUserFromDB(payload: P): Promise<U | null>;
+  getRefreshTokenFromDB(payload: P): Promise<number>;
+  getRefreshedAuthState(payload: P): P;
   isPayload(cookie: unknown): cookie is P;
+  incrementRefreshTokenVersion(payload: P): Promise<void>;
   protectedRoutes: string[];
   signInRoute: string;
   signUpRoute: string;
 }
 
+const RefreshTokenVersionSchema = object({
+  version: pipe(
+    number("Refresh Token Version must be a number"),
+    integer("Refresh Token Version must be an integer"),
+    minValue(0, "Refresh Token Version must be greater than or equal to 0")
+  )
+})
+
 export default class AuthClient<AuthState extends { id: string }, User extends object> {
   private ACCESS_TOKEN: AuthClientConfiguration<AuthState, User>["env"]["ACCESS_TOKEN"];
   private ACCESS_TOKEN_EXPIRES_IN: AuthClientConfiguration<AuthState, User>["env"]["ACCESS_TOKEN_EXPIRES_IN"];
   private ACCESS_COOKIE_NAME: AuthClientConfiguration<AuthState, User>["env"]["ACCESS_COOKIE_NAME"];
+  private REFRESH_TOKEN: AuthClientConfiguration<AuthState, User>["env"]["REFRESH_TOKEN"];
+  private REFRESH_TOKEN_EXPIRES_IN: AuthClientConfiguration<AuthState, User>["env"]["REFRESH_TOKEN_EXPIRES_IN"];
+  private REFRESH_COOKIE_NAME: AuthClientConfiguration<AuthState, User>["env"]["REFRESH_COOKIE_NAME"];
   private isPayload: AuthClientConfiguration<AuthState, User>["isPayload"];
   public readonly signInRoute: AuthClientConfiguration<AuthState, User>["signInRoute"];
   public readonly signUpRoute: AuthClientConfiguration<AuthState, User>["signUpRoute"];
   private protectedRoutes: AuthClientConfiguration<AuthState, User>["protectedRoutes"];
   private initialFindCurrentUser: AuthClientConfiguration<AuthState, User>["findCurrentUserFromDB"];
+  private incrementRefreshTokenVersion: AuthClientConfiguration<AuthState, User>["incrementRefreshTokenVersion"];
+  private getRefreshTokenFromDB: AuthClientConfiguration<AuthState, User>["getRefreshTokenFromDB"];
+  private getRefreshedAuthState: AuthClientConfiguration<AuthState, User>["getRefreshedAuthState"];
 
   public constructor(configuration: AuthClientConfiguration<AuthState, User>) {
     this.ACCESS_TOKEN = configuration.env.ACCESS_TOKEN;
     this.ACCESS_TOKEN_EXPIRES_IN = configuration.env.ACCESS_TOKEN_EXPIRES_IN;
     this.ACCESS_COOKIE_NAME = configuration.env.ACCESS_COOKIE_NAME;
+    this.REFRESH_TOKEN = configuration.env.REFRESH_TOKEN;
+    this.REFRESH_TOKEN_EXPIRES_IN = configuration.env.REFRESH_TOKEN_EXPIRES_IN;
+    this.REFRESH_COOKIE_NAME = configuration.env.REFRESH_COOKIE_NAME;
     this.isPayload = configuration.isPayload;
     this.signInRoute = configuration.signInRoute;
     this.signUpRoute = configuration.signUpRoute;
     this.protectedRoutes = configuration.protectedRoutes;
     this.initialFindCurrentUser = configuration.findCurrentUserFromDB;
+    this.getRefreshTokenFromDB = configuration.getRefreshTokenFromDB;
+    this.getRefreshedAuthState = configuration.getRefreshedAuthState;
+    this.incrementRefreshTokenVersion = configuration.incrementRefreshTokenVersion;
   }
 
   private createAccessCookie(payload: AuthState) {
     return JWT.sign(payload, this.ACCESS_TOKEN, { expiresIn: this.ACCESS_TOKEN_EXPIRES_IN });
   }
 
+  private createRefreshCookie(refreshTokenVersion: number) {
+    return JWT.sign({ version: refreshTokenVersion }, this.REFRESH_TOKEN, { expiresIn: this.REFRESH_TOKEN_EXPIRES_IN });
+  }
+
   public createHandleFunction(): Handle {
     const self = this;
-    return function handle(input) {
-      const payload = self.findAuthStateFromCookies(input.event.cookies);
+    return async function handle(input) {
+      const payload = await self.findAuthStateFromCookies(input.event.cookies);
       const route = input.event.route.id;
 
       if (isNullish(payload)) {
@@ -73,9 +104,14 @@ export default class AuthClient<AuthState extends { id: string }, User extends o
       httpOnly: true,
       path: "/"
     });
+    cookies.set(this.REFRESH_COOKIE_NAME, "", {
+      expires: new Date(Date.now() - 3600),
+      httpOnly: true,
+      path: "/"
+    });
   }
 
-  public findAuthStateFromCookies(cookies: Cookies): AuthState | null {
+  private async findAuthStateFromCookiesWithNoRefresh(cookies: Cookies): Promise<AuthState | null> {
     const initialCookie = cookies.get(this.ACCESS_COOKIE_NAME);
 
     if (isNullish(initialCookie) || isEmpty(initialCookie)) {
@@ -90,11 +126,57 @@ export default class AuthClient<AuthState extends { id: string }, User extends o
 
     this.deleteAuthCookies(cookies);
     return null;
+
+  }
+
+  private async handleRefreshedAuthState(cookies: Cookies, decoded: AuthState): Promise<AuthState | null> {
+    const refreshTokenFromCookies = this.findRefreshTokenFromCookies(cookies);
+    
+    if (isNullish(refreshTokenFromCookies)) {
+      return null;
+    }
+
+    const { data: refreshTokenFromDB } = await useAwait(() => this.getRefreshTokenFromDB(decoded));
+
+    if (refreshTokenFromDB === refreshTokenFromCookies) {
+      const renewed = this.getRefreshedAuthState(decoded);
+      this.setAccessCookie(cookies, renewed);
+      return renewed;
+    }
+
+    return null;
+  }
+
+  public async findAuthStateFromCookies(cookies: Cookies): Promise<AuthState | null> {
+    const initialCookie = cookies.get(this.ACCESS_COOKIE_NAME);
+
+    if (isNullish(initialCookie) || isEmpty(initialCookie)) {
+      return null;
+    }
+
+    const { data, error } = useCatch(() => JWT.verify(initialCookie, this.ACCESS_TOKEN));
+
+    if (error) {
+      const decoded = JWT.decode(initialCookie);
+
+      if (error instanceof JWT.TokenExpiredError && this.isPayload(decoded)) {
+        const refreshed = await this.handleRefreshedAuthState(cookies, decoded);
+
+        if (refreshed) {
+          return refreshed;
+        }
+      }
+    } else if (this.isPayload(data)) {
+      return data;
+    }
+
+    this.deleteAuthCookies(cookies);
+    return null;
   }
 
   public findCurrentUserFromDB(cookies: Cookies): Promise<Result<User | null>> {
     return useAwait(async () => {
-      const payload = this.findAuthStateFromCookies(cookies);
+      const payload = await this.findAuthStateFromCookies(cookies);
 
       if (payload) {
         return this.initialFindCurrentUser(payload);
@@ -104,8 +186,27 @@ export default class AuthClient<AuthState extends { id: string }, User extends o
     });
   }
 
-  public getAuthStateFromCookiesFromCookies(cookies: Cookies): AuthState {
-    const payload = this.findAuthStateFromCookies(cookies);
+  private findRefreshTokenFromCookies(cookies: Cookies): number | null {
+    const initialCookie = cookies.get(this.REFRESH_COOKIE_NAME);
+
+    if (isNullish(initialCookie) || isEmpty(initialCookie)) {
+      return null;
+    }
+
+    const { data } = useCatch(() => {
+      return parse(RefreshTokenVersionSchema, JWT.verify(initialCookie, this.REFRESH_TOKEN));      
+    });
+
+    if (data) {
+      return data.version;
+    }
+
+    this.deleteAuthCookies(cookies);
+    return null;
+  }
+
+  public async getAuthStateFromCookies(cookies: Cookies): Promise<AuthState> {
+    const payload = await this.findAuthStateFromCookies(cookies);
 
     if (payload) {
       return payload;
@@ -145,11 +246,33 @@ export default class AuthClient<AuthState extends { id: string }, User extends o
     });
   }
 
-  public signIn(cookies: Cookies, payload: AuthState): void {
+  private setAccessCookieAndRefreshCookie(cookies: Cookies, payload: AuthState, refreshTokenVersion: number): void {
     this.setAccessCookie(cookies, payload);
+    cookies.set(this.REFRESH_COOKIE_NAME, this.createRefreshCookie(refreshTokenVersion), {
+      httpOnly: true,
+      secure: true,
+      path: "/"
+    });
+  }
+
+  public signIn(cookies: Cookies, payload: AuthState, refreshTokenVersion: number): void {
+    this.setAccessCookieAndRefreshCookie(cookies, payload, refreshTokenVersion);
   }
 
   public signOut(cookies: Cookies): void {
     this.deleteAuthCookies(cookies);
+  }
+
+  public async signOutFromAllDevices(cookies: Cookies): Promise<boolean> {
+    const payload = await this.findAuthStateFromCookiesWithNoRefresh(cookies);
+
+    this.signOut(cookies);
+    
+    if (payload) {
+      await this.incrementRefreshTokenVersion(payload);
+      return true;
+    }
+
+    return false;
   }
 }

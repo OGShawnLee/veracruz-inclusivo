@@ -6,8 +6,8 @@ export function load() {
 }
 
 export const actions = {
-  default(event) {
-    auth.signOut(event.cookies);
+  async default(event) {
+    await auth.signOutFromAllDevices(event.cookies);
     redirect(303, auth.signInRoute);
   }
 }
