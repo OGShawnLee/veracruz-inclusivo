@@ -123,7 +123,9 @@
 									</button>
 								</div>
 							</div>
-							{@render mobileLink('/dashboard/service', 'Crear Servicio', Plus)}
+							{#if currentUser.value}
+								{@render mobileLink('/dashboard/service', 'Crear Servicio', Plus)}
+							{/if}
 						</ul>
 					</nav>
 					<div class="mt-auto">
