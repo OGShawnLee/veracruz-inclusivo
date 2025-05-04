@@ -99,6 +99,14 @@
 									hidden
 									placeholder="Seleccione una región"
 									value={$input.region ?? 'ALL'}
+									onValueChange={(value) => {
+										const url = new URL(window.location.href);
+										url.searchParams.set('region', value);
+										url.searchParams.set('page', '1');
+										goto(url.toString(), {
+											noScroll: true
+										});
+									}}
 								/>
 							{/if}
 						</Input.Root>
