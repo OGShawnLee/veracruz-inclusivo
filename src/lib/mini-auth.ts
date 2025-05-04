@@ -104,11 +104,26 @@ export default class AuthClient<AuthState extends { id: string }, User extends o
     });
   }
 
-  public getAuthFromCookies(cookies: Cookies): AuthState {
+  public getAuthStateFromCookiesFromCookies(cookies: Cookies): AuthState {
     const payload = this.findAuthStateFromCookies(cookies);
 
     if (payload) {
       return payload;
+    }
+
+    throw redirect(302, this.signInRoute);
+  }
+
+  public async getCurrentUserFromDB(cookies: Cookies): Promise<User> {
+    const user = await this.findCurrentUserFromDB(cookies);
+
+    if (user.error || isNullish(user.data)) {
+      this.deleteAuthCookies(cookies);
+      throw redirect(302, this.signInRoute);
+    }
+
+    if (user.data) {
+      return user.data;
     }
 
     throw redirect(302, this.signInRoute);
