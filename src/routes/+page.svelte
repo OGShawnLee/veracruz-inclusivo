@@ -1,9 +1,38 @@
 <script>
 	import { ImageLandingHeroBig, ImageLandingHeroSmall } from '$lib/assets';
+	import { APP_IMAGE_URL, APP_URL } from '$lib';
+
+	const PAGE_TITLE = 'Veracruz Inclusivo - Oportunidades Inclusivas en Veracruz';
 </script>
 
 <svelte:head>
-	<title>Veracruz Inclusivo</title>
+	<title>{PAGE_TITLE}</title>
+	<meta
+		name="description"
+		content="Veracruz Inclusivo es una plataforma que busca conectar a las personas con discapacidad con empresas y organizaciones que ofrecen servicios y oportunidades inclusivas."
+	/>
+	<meta
+		name="keywords"
+		content="veracruz, inclusivo, discapacidad, servicios inclusivos, oportunidades inclusivas, empresas inclusivas, organizaciones inclusivas"
+	/>
+	<meta name="author" content="Veracruz Inclusivo" />
+	<meta property="og:title" content={PAGE_TITLE} />
+	<meta
+		property="og:description"
+		content="Descubre cómo Veracruz Inclusivo conecta a personas con discapacidad con servicios y oportunidades inclusivas en Veracruz."
+	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={APP_IMAGE_URL} />
+	<meta property="og:image" content={APP_IMAGE_URL} />
+	<meta property="og:locale" content="es_MX" />
+	<link rel="canonical" href="{APP_URL}/about-us" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={PAGE_TITLE} />
+	<meta
+		name="twitter:description"
+		content="Veracruz Inclusivo conecta a personas con discapacidad con servicios y oportunidades inclusivas en Veracruz."
+	/>
+	<meta name="twitter:image" content={APP_IMAGE_URL} />
 </svelte:head>
 
 <main class="container">

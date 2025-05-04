@@ -6,6 +6,9 @@ export type Result<T, E = unknown> =
 	{ data: T, failed: false, error: null } | 
 	{ data: null, failed: true, error: E };
 
+export const APP_URL = "https://veracruz-inclusivo.vercel.app";
+export const APP_IMAGE_URL = APP_URL + "/image-landing-hero-small.jpg";
+
 export function concatClassName(className: string, additional: string) {
 	return additional ? className + ' ' + additional : className;
 }

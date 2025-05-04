@@ -1,5 +1,5 @@
 <script>
-	import Pagination from "./pagination-section.svelte"
+	import Pagination from './pagination-section.svelte';
 	import { Input, Radio, Select } from '@components';
 	import { Field, Control } from 'formsnap';
 	import { ServiceCard } from '@features/service/components';
@@ -12,7 +12,10 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 	import { useMousePosition, useWindowWidth } from '$lib/hooks.svelte';
-	import { goto } from "$app/navigation";
+	import { goto } from '$app/navigation';
+	import { APP_IMAGE_URL, APP_URL } from '$lib';
+
+	const PAGE_TITLE = 'Servicios - Veracruz Inclusivo';
 
 	const { data } = $props();
 
@@ -25,7 +28,40 @@
 </script>
 
 <svelte:head>
-	<title>Servicios - Veracruz Inclusivo</title>
+	<title>{PAGE_TITLE}</title>
+	<meta
+		name="description"
+		content="Explora una amplia gama de servicios inclusivos en Veracruz. Encuentra centros, profesionales y empresas comprometidas con la inclusión."
+	/>
+	<meta
+		name="keywords"
+		content="servicios inclusivos, Veracruz, inclusión, discapacidad, directorio inclusivo, empresas inclusivas, centros especializados"
+	/>
+	<meta name="author" content="Veracruz Inclusivo" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta property="og:title" content={PAGE_TITLE} />
+	<meta
+		property="og:description"
+		content="Encuentra servicios inclusivos en Veracruz. Conecta con centros, profesionales y empresas que promueven la inclusión."
+	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{APP_URL}/services" />
+	<meta property="og:image" content={APP_IMAGE_URL} />
+	<meta property="og:locale" content="es_MX" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={PAGE_TITLE} />
+	<meta
+		name="twitter:description"
+		content="Explora servicios inclusivos en Veracruz. Encuentra centros, profesionales y empresas comprometidas con la inclusión."
+	/>
+	<meta name="twitter:image" content={APP_IMAGE_URL} />
+	<link rel="canonical" href="{APP_URL}/services" />
+	{#if $input.page > 1}
+		<link rel="prev" href="{APP_URL}/services?page={$input.page - 1}" />
+	{/if}
+	{#if $input.page < data.totalPages}
+		<link rel="next" href="{APP_URL}/services?page={$input.page + 1}" />
+	{/if}
 </svelte:head>
 
 <main class="container grid gap-16">
@@ -119,7 +155,9 @@
 		{#if data.services.length === 0}
 			<div class="mx-auto flex flex-col gap-4 items-center">
 				<Bird
-					class="transform -z-10 opacity-05 {x.value > width.value / 2 ? 'rotate-0' : 'rotate-y-180'}"
+					class="transform -z-10 opacity-05 {x.value > width.value / 2
+						? 'rotate-0'
+						: 'rotate-y-180'}"
 					size={256}
 					strokeWidth={1.25}
 				/>

@@ -22,7 +22,13 @@ export async function load(event) {
 			error(500, 'Error fetching services');
 		}
 
-		return { count: count as number, form, perPage: limit, services: data as ServiceData[] };
+		return { 
+			count: count as number, 
+			form, 
+			perPage: limit, 
+			services: data as ServiceData[], 
+			totalPages: Math.ceil(count as number / limit) 
+		};
 	}
 
 	error(400, 'Invalid Search Query');
