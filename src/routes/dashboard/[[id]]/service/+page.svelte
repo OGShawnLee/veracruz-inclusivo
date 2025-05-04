@@ -55,7 +55,7 @@
 				<X />
 			</a>
 		</div>
-		<form class="p-8 flex flex-col gap-6" method="post" use:enhance>
+		<form class="p-8 flex flex-col gap-6" action="?/create-or-update" method="post" use:enhance>
 			<Input.Root>
 				<Field {form} name="name">
 					<Control>
