@@ -104,9 +104,7 @@
 									const url = new URL(window.location.href);
 									url.searchParams.set('category', value);
 									url.searchParams.set('page', '1');
-									goto(url.toString(), {
-										noScroll: true
-									});
+									goto(url.toString());
 								}}
 							/>
 						</Field>
@@ -123,9 +121,7 @@
 										const url = new URL(window.location.href);
 										url.searchParams.set('region', value);
 										url.searchParams.set('page', '1');
-										goto(url.toString(), {
-											noScroll: true
-										});
+										goto(url.toString());
 									}}
 								/>
 							{:else}
@@ -139,9 +135,7 @@
 										const url = new URL(window.location.href);
 										url.searchParams.set('region', value);
 										url.searchParams.set('page', '1');
-										goto(url.toString(), {
-											noScroll: true
-										});
+										goto(url.toString());
 									}}
 								/>
 							{/if}
