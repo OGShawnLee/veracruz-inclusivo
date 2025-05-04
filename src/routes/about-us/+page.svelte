@@ -55,7 +55,7 @@
 				{description}
 			</p>
 		</div>
-		<img class="" src={image} alt="" />
+		<enhanced:img src={image} alt="" />
 	</div>
 {/snippet}
 
@@ -137,11 +137,13 @@
 					</p>
 				</div>
 			</div>
-			<enhanced:img
-				class="md:col-span-7 h-full rounded-3xl object-cover"
-				src={ImageAboutWhoWeAre}
-				alt="Un grupo de personas diversas llegan a un acuerdo en su oficina."
-			/>
+			<div class="md:col-span-7">
+				<enhanced:img
+					class="h-full rounded-3xl object-cover"
+					src={ImageAboutWhoWeAre}
+					alt="Un grupo de personas diversas llegan a un acuerdo en su oficina."
+				/>
+			</div>
 		</section>
 		<section class="relative grid gap-8">
 			<div class="grid gap-8">

@@ -1,5 +1,5 @@
 <script>
-	import { ImageLandingHeroBig, ImageLandingHeroSmall } from '$lib/assets';
+	import { ImageLandingHeroBig } from '$lib/assets';
 	import { APP_IMAGE_URL, APP_URL } from '$lib';
 
 	const PAGE_TITLE = 'Veracruz Inclusivo - Oportunidades Inclusivas en Veracruz';
@@ -38,23 +38,21 @@
 <main class="container">
 	<h1 class="hidden">Veracruz Inclusivo</h1>
 	<div class="grid lg:grid-cols-12 gap-16 items-center">
-		<enhanced:img
-			class="lg:col-span-6 xl:col-span-8 h-full rounded-3xl object-cover"
-			src={ImageLandingHeroBig}
-			alt="A group of diverse people working together in an inclusive office."
-		/>
+		<div class="lg:col-span-6 xl:col-span-8">
+			<enhanced:img
+				class="h-full rounded-3xl object-cover"
+				src={ImageLandingHeroBig}
+				alt="A group of diverse people working together in an inclusive office."
+			/>
+		</div>
 		<div class="lg:col-span-6 xl:col-span-4 grid gap-8">
 			<p class="heading text-5xl font-bold">
 				Oportunidades Inclusivas en Veracruz, Ahora a tu Alcance.
 			</p>
 			<p class="text-xl leading-relaxed">
-				<strong class="$text-summit"
-					>Veracruz Inclusivo es tu puente hacia empresas y organizaciones</strong
-				>
+				<strong class="$text-summit">Veracruz Inclusivo es tu puente hacia empresas y organizaciones</strong>
 				que realmente creen en el talento de todos.
-				<strong class="$text-summit"
-					>Encuentra el servicio que necesitas o la oportunidad laboral que mereces</strong
-				>. Construyendo juntos un Veracruz más justo y equitativo.
+				<strong class="$text-summit">Encuentra el servicio que necesitas o la oportunidad laboral que mereces</strong>. Construyendo juntos un Veracruz más justo y equitativo.
 			</p>
 			<div class="grid md:grid-cols-2 gap-4">
 				<a
