@@ -96,5 +96,14 @@ export const ServiceSchema = object({
 		)
 	),
 });
-
 export type ServiceData = InferOutput<typeof ServiceSchema>;
+
+export const IDSchema = object({
+	id: pipe(
+		string('ID debe ser una cadena de texto.'),
+		trim(),
+		transform(reduceSpacing),
+		minLength(1, 'ID debe tener al menos 1 carácter.'),
+	)
+});
+export type IDData = InferOutput<typeof IDSchema>;

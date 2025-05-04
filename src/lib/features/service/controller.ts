@@ -12,6 +12,10 @@ interface FilterSearch {
 }
 
 export namespace ServiceDAO {
+	export function deleteOne(id: string) {
+		return db.from('service').delete().eq('id', id);
+	}
+
 	export function createOne(data: ServiceData) {
 		return db.from('service').insert(data).select('id');
 	}

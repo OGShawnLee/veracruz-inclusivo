@@ -1,4 +1,4 @@
-import { ServiceSchema } from '@features/service/schema';
+import { IDSchema, ServiceSchema } from '@features/service/schema';
 import { ServiceDAO } from '@features/service/controller';
 import { superValidate as validate } from 'sveltekit-superforms/server';
 import { valibot } from 'sveltekit-superforms/adapters';
@@ -33,7 +33,7 @@ export async function load(event) {
 }
 
 export const actions = {
-	async default(event) {
+	"create-or-update": async (event) => {
 		const form = await validate(event, valibot(ServiceSchema));
 
 		if (form.valid === false) {
@@ -48,6 +48,21 @@ export const actions = {
 		if (isValidID(event.params.id)) {
 			await ServiceDAO.updateOne(Number(event.params.id), form.data);
 			return;
+		}
+
+		return fail(400, form);
+	},
+	delete: async (event) => {
+		const form = await validate(event.request, valibot(IDSchema));
+
+		if (form.valid) {
+			const { data, error: err } = await ServiceDAO.deleteOne(form.data.id);
+
+			if (err) {
+				error(500, 'Error deleting service');
+			}
+
+			return { success: true };
 		}
 
 		return fail(400, form);
