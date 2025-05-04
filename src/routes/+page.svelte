@@ -1,5 +1,5 @@
 <script>
-	import { ImageLandingHero } from '$lib/assets';
+	import { ImageLandingHeroBig, ImageLandingHeroSmall } from '$lib/assets';
 </script>
 
 <svelte:head>
@@ -9,11 +9,27 @@
 <main class="container">
 	<h1 class="hidden">Veracruz Inclusivo</h1>
 	<div class="grid lg:grid-cols-12 gap-16 items-center">
-		<img
-			class="lg:col-span-6 xl:col-span-8 h-full rounded-3xl object-cover"
-			src={ImageLandingHero}
-			alt="Hero"
-		/>
+		<picture class="h-full rounded-3xl object-cover lg:col-span-6 xl:col-span-8">
+			<source
+				media="(max-width: 639px)"
+				srcset={ImageLandingHeroSmall}
+				type="image/jpg"
+				width="640"
+				height="452"
+			/>
+			<source
+				media="(min-width: 640px)"
+				srcset={ImageLandingHeroBig}
+				type="image/jpg"
+				width="1280"
+				height="809"
+			/>
+			<img
+				class="lg:col-span-6 xl:col-span-8 h-full rounded-3xl object-cover"
+				src={ImageLandingHeroBig}
+				alt="Hero"
+			/>
+		</picture>
 		<div class="lg:col-span-6 xl:col-span-4 grid gap-8">
 			<p class="heading text-5xl font-bold">
 				Oportunidades Inclusivas en Veracruz, Ahora a tu Alcance.

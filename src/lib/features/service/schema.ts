@@ -4,6 +4,7 @@ import {
 	picklist,
 	maxLength,
 	minLength,
+	nullable,
 	object,
 	pipe,
 	string,
@@ -70,7 +71,7 @@ export const ServiceSchema = object({
 		trim(),
 		transform(reduceSpacing),
 		minLength(ASSOCIATE_NAME_MIN_LENGTH, 'Nombre del asociado debe tener al menos 16 caracteres.'),
-		maxLength(ASSOCIATE_NAME_MAX_LENGTH, 'Nombre del asociado debe tener menos de 256 caracteres.')
+		maxLength(ASSOCIATE_NAME_MAX_LENGTH, 'Nombre del asociado debe tener menos de 256 caracteres.'),
 	),
 	phone_number: pipe(
 		string('Teléfono debe ser una cadena de texto.'),
@@ -85,7 +86,15 @@ export const ServiceSchema = object({
 	region: picklist(
 		Object.keys(ServiceRegionEnumeration) as ServiceRegion[],
 		'Región debe ser una de las opciones disponibles.'
-	)
+	),
+	address: nullable(
+		pipe(
+			string('Dirección debe ser una cadena de texto.'),
+			trim(),
+			minLength(ASSOCIATE_NAME_MIN_LENGTH, 'Dirección debe tener al menos 16 caracteres.'),
+			maxLength(ASSOCIATE_NAME_MAX_LENGTH, 'Dirección debe tener menos de 256 caracteres.')
+		)
+	),
 });
 
 export type ServiceData = InferOutput<typeof ServiceSchema>;

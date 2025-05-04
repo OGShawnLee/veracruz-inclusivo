@@ -65,7 +65,8 @@ export namespace ServiceDAO {
 				associate_full_name: data.associate_full_name,
 				phone_number: data.phone_number,
 				category: data.category,
-				region: data.region
+				region: data.region,
+				address: data.address
 			})
 			.eq('id', id)
 			.select('id');

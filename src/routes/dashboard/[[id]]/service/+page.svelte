@@ -2,6 +2,8 @@
 	import { Control, Field } from 'formsnap';
 	import { X } from 'lucide-svelte';
 	import {
+		ASSOCIATE_NAME_MAX_LENGTH,
+		ASSOCIATE_NAME_MIN_LENGTH,
 		DESCRIPTION_MAX_LENGTH,
 		DESCRIPTION_MIN_LENGTH,
 		ServiceCategoryEnumeration,
@@ -117,6 +119,25 @@
 									type="tel"
 									placeholder="Introduzca el teléfono del asociado"
 									bind:value={$input.phone_number}
+									{...props}
+								/>
+							</Input.Group>
+						{/snippet}
+					</Control>
+					<Input.Error />
+				</Field>
+			</Input.Root>
+			<Input.Root>
+				<Field {form} name="address">
+					<Control>
+						{#snippet children({ props })}
+							<Input.Group>
+								<Input.Label for={props.name} label="Dirección" />
+								<Input.TextArea
+									placeholder="Introduzca la dirección del servicio"
+									bind:value={$input.address}
+									minlength={ASSOCIATE_NAME_MIN_LENGTH}
+									maxlength={ASSOCIATE_NAME_MAX_LENGTH}
 									{...props}
 								/>
 							</Input.Group>
