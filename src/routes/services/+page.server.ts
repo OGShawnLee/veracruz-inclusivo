@@ -8,8 +8,8 @@ import { error } from '@sveltejs/kit';
 export async function load(event) {
 	const form = await validate(event.url.searchParams, valibot(SearchSchema));
 
+	const limit = 12;
 	if (form.valid) {
-		const limit = 12;
 		const { data, count = 0, error: err } = await ServiceDAO.searchMany({
 			query: form.data.query,
 			limit: limit,
@@ -31,5 +31,5 @@ export async function load(event) {
 		};
 	}
 
-	error(400, 'Invalid Search Query');
+	return { count: 0, form, perPage: limit, services: [], totalPages: 0 };
 }
