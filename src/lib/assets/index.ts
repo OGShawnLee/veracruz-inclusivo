@@ -10,6 +10,8 @@ export { default as ImageAboutGallery2 } from './image-about-gallery-2.jpg';
 export { default as ImageAboutGallery3 } from './image-about-gallery-3.jpg';
 export { default as ImageAboutGallery4 } from './image-about-gallery-4.jpg';
 export { default as ImageAboutGallery5 } from './image-about-gallery-5.jpg';
+export { default as ImageAboutGallery6 } from './image-about-gallery-6.jpg';
+
 export { default as ImageAboutWhoWeAre } from './image-about-who-we-are.jpg';
 
 // https://www.pexels.com/es-es/foto/grupo-de-personas-sentadas-dentro-de-la-habitacion-2422294/

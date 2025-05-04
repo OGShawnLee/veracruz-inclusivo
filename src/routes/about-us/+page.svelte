@@ -18,7 +18,7 @@
 	<meta
 		name="description"
 		content="Veracruz Inclusivo es una plataforma que busca conectar a las personas con discapacidad con empresas y organizaciones que ofrecen servicios y oportunidades inclusivas."
-/>
+	/>
 	<meta
 		name="keywords"
 		content="veracruz, inclusivo, discapacidad, servicios inclusivos, oportunidades inclusivas, empresas inclusivas, organizaciones inclusivas"
@@ -137,7 +137,11 @@
 					</p>
 				</div>
 			</div>
-			<img class="md:col-span-7 h-full rounded-3xl object-cover" src={ImageAboutWhoWeAre} alt="" />
+			<enhanced:img
+				class="md:col-span-7 h-full rounded-3xl object-cover"
+				src={ImageAboutWhoWeAre}
+				alt="Un grupo de personas diversas llegan a un acuerdo en su oficina."
+			/>
 		</section>
 		<section class="relative grid gap-8">
 			<div class="grid gap-8">
