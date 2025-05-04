@@ -6,7 +6,7 @@
 		CircleHelp,
 		Computer,
 		Home,
-		LayoutDashboard,
+		// LayoutDashboard,
 		LayoutList,
 		LogOut,
 		Menu,
@@ -61,7 +61,7 @@
 			<nav class="hidden md:block">
 				<ul class="flex gap-8">
 					{@render link('/', 'Inicio')}
-					{@render link('/dashboard', 'Dashboard')}
+					<!-- {@render link('/dashboard', 'Dashboard')} -->
 					{@render link('/services', 'Servicios')}
 					{@render link('/about-us', 'Acerca de Nosotros')}
 				</ul>
@@ -107,7 +107,7 @@
 							{/if}
 							{@render mobileLink('/', 'Inicio', Home)}
 							{@render mobileLink('/services', 'Servicios', LayoutList)}
-							{@render mobileLink('/dashboard', 'Dashboard', LayoutDashboard)}
+							<!-- {@render mobileLink('/dashboard', 'Dashboard', LayoutDashboard)} -->
 							{@render mobileLink('/about-us', 'Acerca de Nosotros', CircleHelp)}
 							<div class="h-10 mx-2 px-2 flex items-center justify-between rounded-md">
 								<span class="$text-summit">Modo de Color</span>
@@ -133,7 +133,7 @@
 			</Dialog.Portal>
 		</Dialog.Root>
 		<div class="hidden lg:flex gap-4">
-			<button class="button button--side size-10" onclick={toggleMode}>
+			<button class="button button--side size-10" onclick={toggleMode} aria-label="Cambiar Modo de Color" title="Cambiar Modo de Color">
 				{#if mode.current === 'dark'}
 					<Sun />
 				{:else}
