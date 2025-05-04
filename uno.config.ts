@@ -14,12 +14,10 @@ export default defineConfig({
 		'button--rectangle': 'px-4',
 		'button--main': 'bg-ground-0-dark text-summit-dark dark:bg-ground-0 dark:text-summit',
 		"button-square": "flex items-center justify-center size-10 bg-transparent",
-		// button:
-		// 	'flex items-center justify-center $text-summit font-medium rounded-lg transition-colors duration-150 focus:(outline-none ring-2 ring-summit dark:ring-summit-dark)',
-		// 'button--main': 'bg-ground-0-dark text-summit-dark dark:bg-ground-0 dark:text-summit',
-		// 'button--side': '$bg-ground-2 hover:(bg-ground-0-dark text-summit-dark dark:(bg-ground-0 text-summit))',
 		container: 'w-full max-w-1538px mx-auto px-4 md:px-8',
 		heading: '$text-summit tracking-tighter',
+		"input": "w-full h-12 px-4 $bg-ground-0 border $border-ground-2 rounded-lg $text-summit $placeholder",
+		// Utils
 		'flex-center': 'flex items-center justify-center',
 		// Adapting to the Color Mode
 		'$text-summit': 'text-summit dark:text-summit-dark',

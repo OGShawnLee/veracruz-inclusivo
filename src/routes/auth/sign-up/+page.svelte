@@ -52,11 +52,11 @@
 						{#snippet children({ props })}
 							<Input.Group>
 								<Input.Label for={props.name} label="Nombre" />
-								<Input.Input
-									placeholder="Introduzca su nombre completo"
-									bind:value={$input.name}
-									{...props}
-								/>
+								<Input.Input placeholder="Introduzca su nombre completo">
+									{#snippet children(context)}
+										<input bind:value={$input.name} {...context} {...props} />
+									{/snippet}
+								</Input.Input>
 							</Input.Group>
 						{/snippet}
 					</Control>
@@ -69,12 +69,11 @@
 						{#snippet children({ props })}
 							<Input.Group>
 								<Input.Label for={props.name} label="Correo Electrónico" />
-								<Input.Input
-									placeholder="Introduzca su correo electrónico"
-									bind:value={$input.email}
-									{...props}
-									type="email"
-								/>
+								<Input.Input placeholder="Introduzca su correo electrónico">
+									{#snippet children(context)}
+										<input type="email" bind:value={$input.email} {...context} {...props} />
+									{/snippet}
+								</Input.Input>
 							</Input.Group>
 						{/snippet}
 					</Control>
@@ -87,11 +86,10 @@
 						{#snippet children({ props })}
 							<Input.Group>
 								<Input.Label for={props.name} label="Contraseña" />
-								<Input.Input
+								<Input.Password
 									placeholder="Introduzca su contraseña"
 									bind:value={$input.password}
 									{...props}
-									type="password"
 								/>
 							</Input.Group>
 						{/snippet}

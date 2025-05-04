@@ -23,7 +23,9 @@
 				createToast({
 					data: {
 						title: data.id ? 'Servicio Actualizado' : 'Servicio Registrado',
-						description: data.id ? 'El servicio ha sido actualizado correctamente.' : 'El servicio ha sido registrado correctamente.',
+						description: data.id
+							? 'El servicio ha sido actualizado correctamente.'
+							: 'El servicio ha sido registrado correctamente.',
 						type: 'SUCCESS'
 					}
 				});
@@ -31,7 +33,9 @@
 				createToast({
 					data: {
 						title: data.id ? 'Error al Actualizar Servicio' : 'Error al Registrar Servicio',
-						description: data.id ? 'No ha sido posible actualizar servicio, intente más tarde.' : 'No ha sido posible registrar servicio, intente más tarde.',
+						description: data.id
+							? 'No ha sido posible actualizar servicio, intente más tarde.'
+							: 'No ha sido posible registrar servicio, intente más tarde.',
 						type: 'ERROR'
 					}
 				});
@@ -62,11 +66,11 @@
 						{#snippet children({ props })}
 							<Input.Group>
 								<Input.Label for={props.name} label="Nombre" />
-								<Input.Input
-									placeholder="Introduzca el nombre del servicio"
-									bind:value={$input.name}
-									{...props}
-								/>
+								<Input.Input placeholder="Introduzca el nombre del servicio">
+									{#snippet children(context)}
+										<input bind:value={$input.name} {...context} {...props} />
+									{/snippet}
+								</Input.Input>
 							</Input.Group>
 						{/snippet}
 					</Control>
@@ -98,11 +102,11 @@
 						{#snippet children({ props })}
 							<Input.Group>
 								<Input.Label for={props.name} label="Nombre de Asociado" />
-								<Input.Input
-									placeholder="Introduzca el nombre del asociado"
-									bind:value={$input.associate_full_name}
-									{...props}
-								/>
+								<Input.Input placeholder="Introduzca el nombre del asociado">
+									{#snippet children(context)}
+										<input bind:value={$input.associate_full_name} {...context} {...props} />
+									{/snippet}
+								</Input.Input>
 							</Input.Group>
 						{/snippet}
 					</Control>
@@ -115,12 +119,11 @@
 						{#snippet children({ props })}
 							<Input.Group>
 								<Input.Label for={props.name} label="Teléfono" />
-								<Input.Input
-									type="tel"
-									placeholder="Introduzca el teléfono del asociado"
-									bind:value={$input.phone_number}
-									{...props}
-								/>
+								<Input.Input placeholder="Introduzca el número de teléfono del servicio">
+									{#snippet children(context)}
+										<input type="tel" bind:value={$input.phone_number} {...context} {...props} />
+									{/snippet}
+								</Input.Input>
 							</Input.Group>
 						{/snippet}
 					</Control>
