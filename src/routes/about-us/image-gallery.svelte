@@ -1,5 +1,6 @@
 <script>
 	import {
+		ImageAboutGallery1,
 		ImageAboutGallery2,
 		ImageAboutGallery3,
 		ImageAboutGallery4,
@@ -10,12 +11,14 @@
 <div class="max-w-1920px w-full px-8 hidden md:grid grid-cols-12 gap-4 xl:gap-8">
 	<img
 		class="col-span-4 aspect-ratio-square"
-		src="https://images.pexels.com/photos/31602740/pexels-photo-31602740/free-photo-of-senal-de-estacionamiento-para-discapacitados.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+		src={ImageAboutGallery1}
+		width="600"
+		height="600"
 		alt=""
 	/>
 	<div class="col-span-2 grid gap-4 xl:gap-8">
-		<img class="aspect-ratio-square" src={ImageAboutGallery2} alt="" />
-		<img class="aspect-ratio-square" src={ImageAboutGallery3} alt="" />
+		<img class="aspect-ratio-square" src={ImageAboutGallery2} alt="" width="300" height="300" />
+		<img class="aspect-ratio-square" src={ImageAboutGallery3} alt="" width="300" height="300" />
 	</div>
 	<img class="col-span-2" src={ImageAboutGallery4} alt="" />
 	<div class="col-span-4 grid gap-8">
