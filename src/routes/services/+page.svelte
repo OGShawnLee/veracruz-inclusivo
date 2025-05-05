@@ -13,7 +13,7 @@
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 	import { useMousePosition, useWindowWidth } from '$lib/hooks.svelte';
 	import { goto } from '$app/navigation';
-	import { APP_IMAGE_URL, APP_URL } from '$lib';
+	import { APP_IMAGE_URL, APP_SITE_NAME, APP_URL } from '$lib';
 
 	const PAGE_TITLE = 'Servicios - Veracruz Inclusivo';
 
@@ -40,6 +40,7 @@
 	<meta name="author" content="Veracruz Inclusivo" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta property="og:title" content={PAGE_TITLE} />
+	<meta property="og:site_name" content={APP_SITE_NAME} />
 	<meta
 		property="og:description"
 		content="Encuentra servicios inclusivos en Veracruz. Conecta con centros, profesionales y empresas que promueven la inclusión."

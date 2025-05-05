@@ -1,6 +1,6 @@
 <script>
 	import { ImageLandingHeroBig } from '$lib/assets';
-	import { APP_IMAGE_URL, APP_URL } from '$lib';
+	import { APP_IMAGE_URL, APP_SITE_NAME, APP_URL } from '$lib';
 
 	const PAGE_TITLE = 'Veracruz Inclusivo - Oportunidades Inclusivas en Veracruz';
 </script>
@@ -17,6 +17,7 @@
 	/>
 	<meta name="author" content="Veracruz Inclusivo" />
 	<meta property="og:title" content={PAGE_TITLE} />
+	<meta property="og:site_name" content={APP_SITE_NAME} />
 	<meta
 		property="og:description"
 		content="Descubre cómo Veracruz Inclusivo conecta a personas con discapacidad con servicios y oportunidades inclusivas en Veracruz."
@@ -50,9 +51,13 @@
 				Oportunidades Inclusivas en Veracruz, Ahora a tu Alcance.
 			</p>
 			<p class="text-xl leading-relaxed">
-				<strong class="$text-summit">Veracruz Inclusivo es tu puente hacia empresas y organizaciones</strong>
+				<strong class="$text-summit"
+					>Veracruz Inclusivo es tu puente hacia empresas y organizaciones</strong
+				>
 				que realmente creen en el talento de todos.
-				<strong class="$text-summit">Encuentra el servicio que necesitas o la oportunidad laboral que mereces</strong>. Construyendo juntos un Veracruz más justo y equitativo.
+				<strong class="$text-summit"
+					>Encuentra el servicio que necesitas o la oportunidad laboral que mereces</strong
+				>. Construyendo juntos un Veracruz más justo y equitativo.
 			</p>
 			<div class="grid md:grid-cols-2 gap-4">
 				<a

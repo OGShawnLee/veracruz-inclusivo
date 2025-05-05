@@ -7,7 +7,7 @@
 		LayoutList,
 		TvMinimalPlay as TVMinimalPlay
 	} from 'lucide-svelte';
-	import { APP_IMAGE_URL, APP_URL } from '$lib';
+	import { APP_IMAGE_URL, APP_SITE_NAME, APP_URL } from '$lib';
 	import { ImageAboutA1, ImageAboutA2, ImageAboutA3, ImageAboutWhoWeAre } from '$lib/assets';
 
 	const PAGE_TITLE = 'Acerca de Nosotros - Veracruz Inclusivo';
@@ -25,6 +25,7 @@
 	/>
 	<meta name="author" content="Veracruz Inclusivo" />
 	<meta property="og:title" content={PAGE_TITLE} />
+	<meta property="og:site_name" content={APP_SITE_NAME} />
 	<meta
 		property="og:description"
 		content="Descubre cómo Veracruz Inclusivo conecta a personas con discapacidad con servicios y oportunidades inclusivas en Veracruz."

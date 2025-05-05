@@ -8,6 +8,7 @@ export type Result<T, E = unknown> =
 
 export const APP_URL = "https://veracruz-inclusivo.vercel.app";
 export const APP_IMAGE_URL = APP_URL + "/image-landing-hero-small.jpg";
+export const APP_SITE_NAME = "Veracruz Inclusivo - Oportunidades Inclusivas en Veracruz";
 
 export function concatClassName(className: string, additional: string) {
 	return additional ? className + ' ' + additional : className;
