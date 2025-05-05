@@ -30,7 +30,7 @@ export type ServiceCategory =
 	| 'ENTERNTAINMENT'
 	| 'BEAUTY-N-SELF-CARE'
 	| 'HEALTH-N-WELL-BEING'
-	| 'SMALL-COMMERCE'
+	| 'RETAIL-TRADE'
 	| 'SPORTS';
 
 export const ServiceCategoryEnumeration: Record<ServiceCategory, string> = {
@@ -39,7 +39,7 @@ export const ServiceCategoryEnumeration: Record<ServiceCategory, string> = {
 	ENTERNTAINMENT: 'Entretenimiento',
 	'BEAUTY-N-SELF-CARE': 'Belleza y Cuidado Personal',
 	'HEALTH-N-WELL-BEING': 'Salud y Bienestar',
-	'SMALL-COMMERCE': 'Comercio Minorista',
+	'RETAIL-TRADE': 'Comercio Minorista',
 	SPORTS: 'Deportes'
 };
 

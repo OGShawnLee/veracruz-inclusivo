@@ -9,7 +9,7 @@ export const SearchCategoryEnumeration: Record<ServiceCategory | 'ALL', string> 
 	ENTERNTAINMENT: 'Entretenimiento',
 	'BEAUTY-N-SELF-CARE': 'Belleza y Cuidado Personal',
 	'HEALTH-N-WELL-BEING': 'Salud y Bienestar',
-	'SMALL-COMMERCE': 'Comercio Minorista',
+	'RETAIL-TRADE': 'Comercio Minorista',
 	SPORTS: 'Deportes'
 };
 export const SearchRegionEnumeration: Record<ServiceRegion | 'ALL', string> = {
